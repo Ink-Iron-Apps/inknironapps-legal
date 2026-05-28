@@ -23,12 +23,18 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Simmer — Recipe Manager">
 <meta property="og:description" content="Collect, modify, and shop from your recipes with AI-powered imports. Fully local, no account.">
-<meta property="og:image" content="https://inknironapps.com/images/apps/simmer.png">
+<meta property="og:image" content="https://inknironapps.com/og-image-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Simmer — local recipe manager with AI imports by Ink & Iron Apps">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Simmer — Recipe Manager">
 <meta name="twitter:description" content="Collect, modify, and shop from your recipes.">
-<meta name="twitter:image" content="https://inknironapps.com/images/apps/simmer.png">
+<meta name="twitter:image" content="https://inknironapps.com/og-image-1200x630.png">
+<meta name="twitter:image:alt" content="Simmer — local recipe manager by Ink & Iron Apps">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 
@@ -66,6 +72,94 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Simmer require an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Open the app and start cooking. There is no signup, no login, and no email collection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do my recipes live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Locally on your device. Nothing is sent to Ink & Iron Apps servers. AI calls, when used, go directly from your device to the AI provider you chose with your own API key."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI providers does Simmer support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI (GPT-4o and later models), Google Gemini, and Anthropic Claude. You bring your own API key — your key, your data, your cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does AI cost in Simmer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whatever your chosen provider charges. Simmer takes no markup and never proxies your calls. Most recipe imports use under a cent of tokens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Simmer import a recipe from a URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Simmer first tries structured-data extraction (Recipe schema.org markup that most modern recipe sites publish). For sites that don't have clean structured data, AI fallback handles the parse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I import a recipe from a photo or handwritten note?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — AI vision extracts ingredients, steps, and timing from photos of recipe cards, handwritten notes, or cookbook pages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Simmer build shopping lists?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Add any recipe to your shopping list in one tap; Simmer merges duplicate ingredients automatically. Check items off as you shop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Simmer work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your recipes, edits, and shopping list all work offline. URL imports and AI features need internet — once a recipe is saved, it is available without a connection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Simmer available on iOS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Android only for the alpha. Simmer is built on Flutter so iOS is achievable later if there is demand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I sign up to test Simmer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Request access through the contact form at https://inknironapps.com/contact.html?topic=alpha-simmer. Include your device, Android version, and which AI provider you would like to test with."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -90,7 +184,7 @@
   <a class="back-link" href="/apps/">&larr; All apps</a>
   <div class="book-layout">
     <aside class="book-cover">
-      <img src="/images/apps/simmer.png" alt="Simmer icon" style="border-radius: 28px;">
+      <img src="/images/apps/simmer.png" width="512" height="512" fetchpriority="high" decoding="async" alt="Simmer app icon — local recipe manager with AI imports for Android" style="border-radius: 28px;">
       <div class="book-meta">
         <div class="meta-row"><span>Status</span><span>Closed alpha</span></div>
         <div class="meta-row"><span>Platform</span><span>Android</span></div>
@@ -159,6 +253,68 @@
         <p>Whether you're recreating grandma's lasagna or experimenting with a new technique, Simmer keeps everything in one place — organized, editable, and ready to shop from. No subscription. No ads. No account. Just cooking.</p>
         <p>Currently in closed alpha. <a href="/contact.html?topic=alpha-simmer">request access via the contact form</a> if you want in.</p>
       </div>
+
+      <section class="faq" aria-labelledby="simmer-faq-heading">
+        <h2 id="simmer-faq-heading">Frequently asked</h2>
+        <details>
+          <summary>Does Simmer require an account?</summary>
+          <p>No. Open the app and start cooking. There is no signup, no login, and no email collection.</p>
+        </details>
+        <details>
+          <summary>Where do my recipes live?</summary>
+          <p>Locally on your device. Nothing is sent to Ink &amp; Iron Apps servers. AI calls, when used, go directly from your device to the AI provider you chose with your own API key.</p>
+        </details>
+        <details>
+          <summary>Which AI providers does Simmer support?</summary>
+          <p>OpenAI (GPT-4o and later models), Google Gemini, and Anthropic Claude. You bring your own API key — your key, your data, your cost.</p>
+        </details>
+        <details>
+          <summary>What does AI cost in Simmer?</summary>
+          <p>Whatever your chosen provider charges. Simmer takes no markup and never proxies your calls. Most recipe imports use under a cent of tokens.</p>
+        </details>
+        <details>
+          <summary>Can Simmer import a recipe from a URL?</summary>
+          <p>Yes. Simmer first tries structured-data extraction (Recipe schema.org markup that most modern recipe sites publish). For sites that don&rsquo;t have clean structured data, AI fallback handles the parse.</p>
+        </details>
+        <details>
+          <summary>Can I import from a photo or handwritten note?</summary>
+          <p>Yes — AI vision extracts ingredients, steps, and timing from photos of recipe cards, handwritten notes, or cookbook pages.</p>
+        </details>
+        <details>
+          <summary>Does Simmer build shopping lists?</summary>
+          <p>Yes. Add any recipe to your shopping list in one tap; Simmer merges duplicate ingredients automatically so &ldquo;2 cups flour&rdquo; doesn&rsquo;t appear five times. Check items off as you shop.</p>
+        </details>
+        <details>
+          <summary>Does Simmer work offline?</summary>
+          <p>Your recipes, edits, and shopping list all work offline. URL imports and AI features need internet — once a recipe is saved, it&rsquo;s available without a connection.</p>
+        </details>
+        <details>
+          <summary>Is Simmer available on iOS?</summary>
+          <p>Android only for the alpha. Simmer is built on Flutter so iOS is achievable later if there&rsquo;s demand.</p>
+        </details>
+        <details>
+          <summary>How do I sign up to test Simmer?</summary>
+          <p><a href="/contact.html?topic=alpha-simmer">Request access through the contact form.</a> Include your device, Android version, and which AI provider you&rsquo;d like to test with.</p>
+        </details>
+      </section>
+
+      <aside class="related" aria-labelledby="simmer-related-heading">
+        <h2 id="simmer-related-heading">More from the workshop</h2>
+        <div class="related-list">
+          <a class="related-card" href="/apps/libraryiq.html">
+            <div class="related-kicker">Workshop · App</div>
+            <div class="related-title">LibraryIQ</div>
+          </a>
+          <a class="related-card" href="/apps/matcalc.html">
+            <div class="related-kicker">Workshop · App</div>
+            <div class="related-title">MatCalc</div>
+          </a>
+          <a class="related-card" href="/books/">
+            <div class="related-kicker">Library · By the maker</div>
+            <div class="related-title">Books by Riley E. Antrobus</div>
+          </a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>

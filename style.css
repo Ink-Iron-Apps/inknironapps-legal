@@ -463,6 +463,105 @@ a.col:hover h3 { color: var(--teal-bright); }
 .book-body .essay { max-width: 640px; }
 .book-body .essay p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 
+/* ---------- FAQ accordion ---------- */
+.faq {
+  max-width: 680px;
+  margin: 64px 0 0;
+}
+.faq h2 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--paper);
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+.faq details {
+  border-top: 1px solid rgba(232, 228, 218, 0.10);
+  padding: 20px 0;
+}
+.faq details:last-of-type { border-bottom: 1px solid rgba(232, 228, 218, 0.10); }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--paper);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: '+';
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  color: var(--teal-bright);
+  flex-shrink: 0;
+}
+.faq details[open] summary::after { content: '\2212'; }
+.faq details p {
+  margin: 14px 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--paper);
+  opacity: 0.9;
+}
+.faq details p + p { margin-top: 14px; }
+.faq details a { color: var(--teal-bright); border-bottom: 1px solid rgba(59, 179, 201, 0.3); }
+.faq details a:hover { border-bottom-color: var(--teal-bright); }
+
+/* ---------- Related cross-link cards ---------- */
+.related {
+  max-width: 680px;
+  margin: 64px 0 0;
+  border-top: 1px solid rgba(232, 228, 218, 0.10);
+  padding-top: 32px;
+}
+.related h2 {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--paper);
+  margin: 0 0 20px;
+}
+.related-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.related-card {
+  display: block;
+  padding: 18px 20px;
+  background: rgba(232, 228, 218, 0.03);
+  border: 1px solid rgba(232, 228, 218, 0.08);
+  color: var(--paper);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.related-card:hover {
+  border-color: rgba(59, 179, 201, 0.4);
+  background: rgba(9, 95, 115, 0.08);
+}
+.related-card .related-kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 8px;
+}
+.related-card .related-title {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--paper);
+}
+
 /* App cards mirror book cards but icon-sized */
 /* ---------- Contact form ---------- */
 .contact-page { max-width: 720px; margin: 0 auto; padding: 56px 56px 80px; }
