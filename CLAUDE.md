@@ -13,6 +13,10 @@ Two brands, one site:
 /books/                                                    → all-books index
 /books/warborn-protocols/                                  → series landing
 /books/warborn-protocols/fleet-school-dropout.html         → book detail
+/books/warborn-protocols/network-recruit.html              → book detail (bk2)
+/books/echoes-of-yggdrasil/                                → series landing
+/books/echoes-of-yggdrasil/the-nine-bridges.html           → book detail (bk1)
+/books/the-recursion-engine.html                           → standalone book detail
 /books/weaving-eternal-tapestry.html                       → standalone book detail
 /apps/                                                     → all-apps index
 /apps/libraryiq.html                                       → app detail
@@ -22,6 +26,21 @@ Two brands, one site:
 /terms.html                                                → legal (used by app store listings)
 /sitemap.xml · /robots.txt                                 → SEO
 ```
+
+## Book source of truth (publishing registry)
+
+`/home/riley/writing/PUBLISHING_REGISTRY.md` = canonical index of every published book. User updates it on each KDP publish → always current. **Drive all new book pages from it.**
+
+Per row: title · status (`LIVE` = has ASIN, build page; `—` = skip, not published) · ASIN · clean Amazon URL (`https://www.amazon.com/dp/<ASIN>`) · path to `<book>/marketing/LISTING_DATA.md`.
+
+`LISTING_DATA.md` (in the writing vault) holds the canonical body copy: blurb (§2), tagline, page count, audience/reading age, series position. Pull page text from there — NOT from Amazon HTML.
+
+Covers: `<book>/cover/front_cover_ebook.jpg` (series) or `<book>/cover-gen/front_cover_ebook.jpg` (standalone), 1600×2560. Resize → 1024×1536-capped, q82, strip; drop in `/images/books/<slug>.jpg`.
+
+Workflow when user says "registry updated, add new books":
+1. Diff registry `LIVE` rows vs pages already in `/books/`.
+2. For each new LIVE book: copy+resize cover, build detail page (+ series landing if new series), wire related-cards, add to `/books/` index (cards + both JSON-LD blocks + count), add to home `#books` cards + keywords, register in `sitemap.xml` + this page tree, bump `lastmod`.
+3. Print = ebook-only until ISBN owned (registry/LISTING_DATA §7 flags it) → Kindle button only, no Paperback.
 
 URL patterns:
 - Books: `/books/<series-slug>/<book-slug>.html` for series, `/books/<book-slug>.html` for standalone. Don't shorten slugs → SEO match titles. New book in existing series → drop in series folder. New series → new folder under `/books/`.
