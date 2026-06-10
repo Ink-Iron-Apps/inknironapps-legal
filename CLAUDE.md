@@ -40,7 +40,7 @@ Covers: `<book>/cover/front_cover_ebook.jpg` (series) or `<book>/cover-gen/front
 Workflow when user says "registry updated, add new books":
 1. Diff registry `LIVE` rows vs pages already in `/books/`.
 2. For each new LIVE book: copy+resize cover, build detail page (+ series landing if new series), wire related-cards, add to `/books/` index (cards + both JSON-LD blocks + count), add to home `#books` cards + keywords, register in `sitemap.xml` + this page tree, bump `lastmod`.
-3. Print = ebook-only until ISBN owned (registry/LISTING_DATA §7 flags it) → Kindle button only, no Paperback.
+3. Editions: registry main tables = Kindle ASIN. If the book has a row in the registry's **Print (paperback) editions** section, also wire a Paperback button (`btn btn-s` on detail, plain `edition-btn` on cards) + a `Paperback` `workExample` in the Book JSON-LD (`workExample` becomes an array). No print row → Kindle only.
 
 URL patterns:
 - Books: `/books/<series-slug>/<book-slug>.html` for series, `/books/<book-slug>.html` for standalone. Don't shorten slugs → SEO match titles. New book in existing series → drop in series folder. New series → new folder under `/books/`.
