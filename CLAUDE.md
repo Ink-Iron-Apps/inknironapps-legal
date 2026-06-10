@@ -22,6 +22,8 @@ Two brands, one site:
 /apps/libraryiq.html                                       → app detail
 /apps/matcalc.html                                         → app detail
 /apps/simmer.html                                          → app detail
+/about/                                                    → about the author (Riley E. Antrobus)
+/about/ink-iron-apps.html                                  → about the maker (Ink & Iron Apps)
 /privacy-policy.html                                       → legal (used by app store listings)
 /terms.html                                                → legal (used by app store listings)
 /sitemap.xml · /robots.txt                                 → SEO
