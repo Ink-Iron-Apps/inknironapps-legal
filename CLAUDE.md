@@ -134,7 +134,7 @@ When updating author-facing site copy (home About paragraph, book detail descrip
 **Channel rules to remember when copying to/from the site:**
 - The site can use the URL `inknironapps.com` and full email addresses freely (it's our own domain).
 - The vault's `Author Bio.md` documents which Amazon channels strip URLs — that constraint applies to KDP/Author Central, not to this site.
-- Voice quirks (e.g. "(oops, spoiler)") are intentional. Keep them.
+- Voice quirks in the bio (wry asides, sly humor) are intentional — keep them unless the vault drops them. The "(oops, spoiler)" aside was removed once Echoes of Yggdrasil Book 1 published (naming the series stopped being a spoiler); the vault `Author Bio.md` is the source of truth for current bio copy.
 
 ## Site rebuild from Pages-default
 
