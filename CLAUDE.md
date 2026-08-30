@@ -60,7 +60,7 @@ LibraryIQ ships as a SaaS PWA at **`https://libraryiq.inknironapps.com`** (repo 
 - Card + detail CTA = `Open LibraryIQ →` linking `https://libraryiq.inknironapps.com` (`edition-btn primary` on cards, `btn btn-p` on detail).
 - Status badges read `Live · Web app`.
 - Pricing is sourced from `worker/src/billing.ts` (`TIERS`) and `FREE_AI_CALLS_PER_MONTH` in `worker/src/index.ts` — app free, only AI requests metered. Re-check both when the tier table changes; the `offers` array in the page JSON-LD mirrors them.
-- Contact-form topic is `libraryiq` ("LibraryIQ support"). The old `alpha-libraryiq` key is kept as a legacy alias in `worker/contact-worker.js` only — **redeploy that worker** after changing its topic maps; GH Pages does not deploy it.
+- Contact-form topic is `libraryiq` ("LibraryIQ support"). The old `alpha-libraryiq` key is kept as a legacy alias in `worker/contact-worker.js` only — **redeploy that worker** after changing its topic maps (`wrangler deploy -c worker/wrangler.toml` — always with the config; a config-less deploy overrides the remote settings); GH Pages does not deploy it.
 
 ## Branch strategy (overrides global)
 

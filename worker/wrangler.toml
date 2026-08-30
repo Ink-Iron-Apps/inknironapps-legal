@@ -1,0 +1,22 @@
+# Deploy config for the contact-form Worker.
+#
+#   wrangler deploy -c worker/wrangler.toml
+#
+# Keep this file in sync with what's live: a config-less `wrangler deploy`
+# overrides the remote settings with its own defaults, which silently turned
+# observability off once already.
+
+name = "inknironapps-contact"
+main = "contact-worker.js"
+compatibility_date = "2026-05-07"
+
+# RESEND_API_KEY is a secret, set out of band and preserved across deploys:
+#   wrangler secret put RESEND_API_KEY -c worker/wrangler.toml
+# ALLOWED_ORIGIN is deliberately unset — the Worker defaults to
+# https://inknironapps.com when it's absent.
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true

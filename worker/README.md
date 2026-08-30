@@ -4,6 +4,30 @@ Cloudflare Worker backend for `inknironapps.com/contact.html`. Receives form POS
 
 ## Deploy
 
+`wrangler.toml` in this folder is the source of truth for the Worker's config. From the repo root:
+
+```bash
+wrangler deploy -c worker/wrangler.toml
+```
+
+Deploy **with** the config, always. A config-less `wrangler deploy --name inknironapps-contact` overrides the remote settings with wrangler's own defaults — that silently disabled observability logging once. Secrets (`RESEND_API_KEY`) are preserved across deploys either way; plain-text vars set in the dashboard are not.
+
+Check a config change before shipping it:
+
+```bash
+wrangler deploy -c worker/wrangler.toml --dry-run
+```
+
+Set or rotate the API key:
+
+```bash
+wrangler secret put RESEND_API_KEY -c worker/wrangler.toml
+```
+
+Note this Worker is **not** deployed by GitHub Pages — pushing `main` updates the site but leaves the Worker on its last deploy. After changing `ROUTES` or `TOPIC_LABELS`, redeploy or the new topic values fall through the route map.
+
+## First-time setup (dashboard)
+
 1. Cloudflare dashboard → Workers & Pages → Create → Worker
 2. Name: `inknironapps-contact`
 3. Edit code → paste contents of `contact-worker.js`
