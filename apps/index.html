@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apps — Ink &amp; Iron Apps</title>
-<meta name="description" content="The full catalogue of apps by Ink & Iron Apps — small, sharp tools for makers, readers, and small operations. All in closed alpha testing.">
+<meta name="description" content="The full catalogue of apps by Ink & Iron Apps — small, sharp tools for makers, readers, and small operations. LibraryIQ is live as a web app; MatCalc and Simmer are in closed alpha on Android.">
 <meta name="author" content="Riley E. Antrobus">
-<meta name="keywords" content="Ink and Iron Apps, LibraryIQ, MatCalc, Simmer, Android apps, indie apps, Riley E. Antrobus">
+<meta name="keywords" content="Ink and Iron Apps, LibraryIQ, reading tracker web app, MatCalc, Simmer, Android apps, indie apps, Riley E. Antrobus">
 <link rel="canonical" href="https://inknironapps.com/apps/">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -58,7 +58,7 @@
     "url": "https://inknironapps.com/"
   },
   "hasPart": [
-    { "@type": "SoftwareApplication", "name": "LibraryIQ", "url": "https://inknironapps.com/apps/libraryiq.html", "operatingSystem": "Android", "applicationCategory": "BookApplication" },
+    { "@type": "WebApplication", "name": "LibraryIQ", "url": "https://libraryiq.inknironapps.com/", "operatingSystem": "Any", "applicationCategory": "BookApplication" },
     { "@type": "SoftwareApplication", "name": "MatCalc", "url": "https://inknironapps.com/apps/matcalc.html", "operatingSystem": "Android", "applicationCategory": "UtilitiesApplication" },
     { "@type": "SoftwareApplication", "name": "Simmer", "url": "https://inknironapps.com/apps/simmer.html", "operatingSystem": "Android", "applicationCategory": "LifestyleApplication" }
   ]
@@ -78,13 +78,15 @@
       "position": 1,
       "url": "https://inknironapps.com/apps/libraryiq.html",
       "item": {
-        "@type": "SoftwareApplication",
+        "@type": "WebApplication",
         "name": "LibraryIQ",
-        "url": "https://inknironapps.com/apps/libraryiq.html",
+        "url": "https://libraryiq.inknironapps.com/",
+        "sameAs": "https://inknironapps.com/apps/libraryiq.html",
         "image": "https://inknironapps.com/images/apps/libraryiq.png",
         "applicationCategory": "BookApplication",
-        "operatingSystem": "Android",
-        "description": "Personal book library manager. Barcode scanning, AI cover recognition, metadata from 16+ sources, AI subgenre classification, optional cloud sync."
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern browser with JavaScript enabled",
+        "description": "Reading tracker and personal library manager in the browser. Shelf, cover gallery, tracker table, wishlist and book budget, with barcode scanning, metadata from six catalogues, AI shelf recognition, lending, badges and stats."
       }
     },
     {
@@ -142,16 +144,17 @@
   <a class="back-link" href="/">&larr; Home</a>
   <div class="kicker">The Workshop</div>
   <h2>Apps, <em>by Ink <span class="amp">&amp;</span> Iron Apps</em>.</h2>
-  <p class="lede">Small, sharp tools for makers, readers, and small operations. All three apps below are currently in <strong>closed alpha testing</strong> — no Play Store release yet. Want to alpha test? <a href="/contact.html?topic=general">Pick an app on the contact form</a>.</p>
+  <p class="lede">Small, sharp tools for makers, readers, and small operations. <strong>LibraryIQ</strong> is live as a web app — <a href="https://libraryiq.inknironapps.com" rel="noopener">open it in any browser</a>. MatCalc and Simmer are still in <strong>closed alpha testing</strong> on Android; want to test one? <a href="/contact.html?topic=general">Pick an app on the contact form</a>.</p>
 
   <article class="app-card">
-    <div class="app-card-icon"><img src="/images/apps/libraryiq.png" width="512" height="512" loading="lazy" decoding="async" alt="LibraryIQ app icon — personal book library manager"></div>
+    <div class="app-card-icon"><img src="/images/apps/libraryiq.png" width="512" height="512" loading="lazy" decoding="async" alt="LibraryIQ app icon — reading tracker and library web app"></div>
     <div class="app-card-body">
-      <span class="num">Alpha · Android</span>
+      <span class="num">Live · Web app</span>
       <h3><a href="/apps/libraryiq.html">LibraryIQ</a></h3>
-      <p class="tagline"><em>Scan, catalog, and organize your personal book library with AI-powered lookup.</em></p>
-      <p>Scan a barcode, snap a cover photo, or search by title — LibraryIQ finds metadata from 16+ sources and adds it to your library in seconds. AI-classified subgenres, custom collections, optional cloud sync for shared libraries.</p>
+      <p class="tagline"><em>Your complete reading tracker — shelf, gallery, tracker, wishlist and book budget in one place.</em></p>
+      <p>Live now as a web app at <strong>libraryiq.inknironapps.com</strong> — nothing to install. Scan a barcode in the browser, pull metadata from six catalogues, photograph a whole shelf, and track reading, lending, badges and book spending. Free, syncs to every device, installs to a home screen.</p>
       <div class="editions">
+        <a class="edition-btn primary" href="https://libraryiq.inknironapps.com" rel="noopener">Open LibraryIQ &rarr;</a>
         <a class="edition-btn ghost" href="/apps/libraryiq.html">Details &rsaquo;</a>
       </div>
     </div>

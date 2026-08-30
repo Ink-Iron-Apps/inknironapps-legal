@@ -15,6 +15,8 @@ const FROM_ADDRESS = "noreply@inknironapps.com";
 // topic -> destination alias (all forward to info@ inbox; routing is for filtering)
 const ROUTES = {
   "general":         "info@inknironapps.com",
+  "libraryiq":       "support@inknironapps.com",
+  // Legacy key, kept so links indexed before LibraryIQ moved to the web still route.
   "alpha-libraryiq": "support@inknironapps.com",
   "alpha-matcalc":   "support@inknironapps.com",
   "alpha-simmer":    "support@inknironapps.com",
@@ -25,7 +27,8 @@ const ROUTES = {
 
 const TOPIC_LABELS = {
   "general":         "General inquiry",
-  "alpha-libraryiq": "Alpha tester — LibraryIQ",
+  "libraryiq":       "LibraryIQ support",
+  "alpha-libraryiq": "LibraryIQ support",
   "alpha-matcalc":   "Alpha tester — MatCalc",
   "alpha-simmer":    "Alpha tester — Simmer",
   "author":          "Author / book inquiry",

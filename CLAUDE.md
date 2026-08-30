@@ -48,9 +48,19 @@ URL patterns:
 - Books: `/books/<series-slug>/<book-slug>.html` for series, `/books/<book-slug>.html` for standalone. Don't shorten slugs → SEO match titles. New book in existing series → drop in series folder. New series → new folder under `/books/`.
 - Apps: `/apps/<app-slug>.html` flat. No series concept. Icons live `/images/apps/<app-slug>.png` (square 512+ source).
 
-App copy must match official Play Store listings exactly (taglines, feature lists, pricing). Pull from each app repo's `store-assets/store-listing.txt` or equivalent. Don't paraphrase — Safe Browsing classifiers flag mismatched promises.
+App copy must match the official listing exactly (taglines, feature lists, pricing). Pull from each app repo's `store-assets/store-listing.txt` or equivalent; for web apps, from the repo's `README.md`, in-app copy (`HowItWorks`), and the real tier table in code. Don't paraphrase — Safe Browsing classifiers flag mismatched promises.
 
-Apps in alpha → mark "Closed alpha" in meta + body. CTAs = `mailto:info@inknironapps.com?subject=<app>%20alpha%20tester`. NO fake Play Store links until app actually published.
+Apps in alpha → mark "Closed alpha" in meta + body. CTAs = the contact form (`/contact.html?topic=alpha-<app>`). NO fake Play Store links until app actually published.
+
+### LibraryIQ is a web app, not an Android app
+
+LibraryIQ ships as a SaaS PWA at **`https://libraryiq.inknironapps.com`** (repo `/home/riley/coding/libraryiqv3` — Vite + React PWA on a Cloudflare Worker + D1). The Android alpha is **retired**; nothing on this site should describe LibraryIQ as an Android app or an alpha.
+
+- `/apps/libraryiq.html` JSON-LD is `WebApplication` (`operatingSystem: "Any"`, `browserRequirements`, `installUrl`), not `SoftwareApplication`/Android. `url` points at the SaaS; `sameAs` points back at this page.
+- Card + detail CTA = `Open LibraryIQ →` linking `https://libraryiq.inknironapps.com` (`edition-btn primary` on cards, `btn btn-p` on detail).
+- Status badges read `Live · Web app`.
+- Pricing is sourced from `worker/src/billing.ts` (`TIERS`) and `FREE_AI_CALLS_PER_MONTH` in `worker/src/index.ts` — app free, only AI requests metered. Re-check both when the tier table changes; the `offers` array in the page JSON-LD mirrors them.
+- Contact-form topic is `libraryiq` ("LibraryIQ support"). The old `alpha-libraryiq` key is kept as a legacy alias in `worker/contact-worker.js` only — **redeploy that worker** after changing its topic maps; GH Pages does not deploy it.
 
 ## Branch strategy (overrides global)
 
