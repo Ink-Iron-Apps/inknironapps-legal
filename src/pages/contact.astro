@@ -1,0 +1,109 @@
+---
+// Transcribed from the hand-written page by scripts/convert_page.py.
+// Body is verbatim; head values come from the original tags.
+import Base from "../layouts/Base.astro";
+const head = {
+  "title": "Contact — Riley E. Antrobus & Ink & Iron Apps",
+  "description": "Get in touch with Riley E. Antrobus and Ink & Iron Apps — alpha tester signup, author inquiries, privacy questions, and general contact.",
+  "keywords": "contact Riley E. Antrobus, Ink and Iron Apps contact, LibraryIQ support, alpha tester signup, MatCalc alpha, Simmer alpha",
+  "path": "/contact.html",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "Contact — Riley E. Antrobus & Ink & Iron Apps",
+  "ogDescription": "Alpha tester signup, author inquiries, privacy questions, and general contact.",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Riley E. Antrobus and Ink & Iron Apps",
+      "url": "https://inknironapps.com/contact.html"
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="contact-page">
+  <a class="back-link" href="/">&larr; Home</a>
+  <div class="kicker">Get in touch</div>
+  <h2>Contact, <em>direct</em>.</h2>
+  <p class="lede">Alpha tester signup, author inquiries, privacy questions, security reports — pick a topic and the message routes to the right inbox. Prefer email? Every footer has direct addresses.</p>
+
+  <div id="contact-status" class="contact-status" aria-live="polite"></div>
+
+  <form id="contact-form" class="contact-form" method="POST" action="https://inknironapps-contact.padragantrbs.workers.dev/">
+    <label>
+      <span>Topic</span>
+      <select name="topic" id="topic" required>
+        <option value="general">General inquiry</option>
+        <option value="libraryiq">LibraryIQ support</option>
+        <option value="alpha-matcalc">Alpha tester — MatCalc</option>
+        <option value="alpha-simmer">Alpha tester — Simmer</option>
+        <option value="author">Author / book inquiry (Riley)</option>
+        <option value="privacy">Privacy / data request</option>
+        <option value="security">Security / vulnerability report</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Your name</span>
+      <input type="text" name="name" required autocomplete="name" maxlength="120">
+    </label>
+
+    <label>
+      <span>Your email</span>
+      <input type="email" name="email" required autocomplete="email" maxlength="200">
+    </label>
+
+    <label>
+      <span>Message</span>
+      <textarea name="message" required rows="6" maxlength="5000" placeholder="Tell us what you're after. For alpha tester signups, mention your device and Android version."></textarea>
+    </label>
+
+    <!-- Honeypot — bots fill this, humans don't see it -->
+    <label class="honey" aria-hidden="true" tabindex="-1">
+      <span>Leave this field empty</span>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+    </label>
+
+    <button type="submit" class="btn btn-p">Send message</button>
+  </form>
+
+  <div class="essay" style="margin-top:48px;max-width:680px;">
+    <h3>Or reach out directly</h3>
+    <ul>
+      <li><strong>General / brand</strong> — <a href="mailto:info@inknironapps.com">info@inknironapps.com</a></li>
+      <li><strong>App support / alpha tester</strong> — <a href="mailto:support@inknironapps.com">support@inknironapps.com</a></li>
+      <li><strong>Author / book inquiry</strong> — <a href="mailto:riley@inknironapps.com">riley@inknironapps.com</a></li>
+      <li><strong>Privacy / data request</strong> — <a href="mailto:privacy@inknironapps.com">privacy@inknironapps.com</a></li>
+      <li><strong>Security report</strong> — <a href="mailto:security@inknironapps.com">security@inknironapps.com</a></li>
+    </ul>
+  </div>
+</section>
+
+<script is:inline>
+// Pre-select topic from query string (e.g. /contact.html?topic=libraryiq)
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var topic = params.get('topic');
+  if (topic) {
+    var select = document.getElementById('topic');
+    if (select && Array.from(select.options).some(o => o.value === topic)) {
+      select.value = topic;
+    }
+  }
+
+  // Show success/error banner from query string
+  var status = document.getElementById('contact-status');
+  if (params.get('sent') === '1') {
+    status.className = 'contact-status success';
+    status.textContent = "Message sent. We'll be in touch soon.";
+  } else if (params.get('error')) {
+    status.className = 'contact-status error';
+    status.textContent = "Something went wrong. Try again, or email the address listed below.";
+  }
+})();
+</script>
+</Base>

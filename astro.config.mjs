@@ -5,12 +5,17 @@ export default defineConfig({
   site: "https://inknironapps.com",
 
   build: {
-    // CRITICAL: the live site publishes /books/<series>/<slug>.html — file
-    // extensions, not directory URLs. Astro's default ("directory") would
-    // emit /books/<series>/<slug>/index.html and silently move every book
-    // and app page to a new address, throwing away its ranking. Do not
-    // change this without redirects in place.
-    format: "file",
+    // CRITICAL, and neither of the obvious options is right. The live site
+    // uses a mixed convention:
+    //   detail pages  ->  /terms.html, /books/<series>/<slug>.html
+    //   index pages   ->  /about/, /books/, /apps/, /books/<series>/
+    // "directory" would move every detail page; "file" flattens
+    // about/index.astro to /about.html and moves every index page. Only
+    // "preserve" keeps the source structure as authored, so index.astro
+    // stays an index.html inside its directory and everything else keeps
+    // its .html. Changing this moves published URLs — don't, without
+    // redirects in place.
+    format: "preserve",
   },
 
   // No adapter: output is static, which is what GitHub Pages and Cloudflare

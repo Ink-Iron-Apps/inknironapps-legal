@@ -1,0 +1,110 @@
+---
+// Transcribed from the hand-written page by scripts/convert_page.py.
+// Body is verbatim; head values come from the original tags.
+import Base from "../../layouts/Base.astro";
+const head = {
+  "title": "About Riley E. Antrobus — Author",
+  "description": "About Riley E. Antrobus — author of cinematic science fiction and Norse-flavored urban fantasy, including the Warborn Protocols series and the Echoes of Yggdrasil saga.",
+  "keywords": "Riley E. Antrobus, about the author, science fiction author, urban fantasy author, Warborn Protocols, Echoes of Yggdrasil, Ink and Iron Apps",
+  "path": "/about/",
+  "ogType": "profile",
+  "ogSiteName": "Riley E. Antrobus",
+  "ogTitle": "About Riley E. Antrobus — Author",
+  "ogDescription": "Author of cinematic science fiction and Norse-flavored urban fantasy. Crafted Stories. Forged Software.",
+  "image": "/og-image-1200x630.png",
+  "twitterDescription": "Author of cinematic science fiction and Norse-flavored urban fantasy.",
+  "profileFirstName": "Riley",
+  "profileLastName": "Antrobus",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inknironapps.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About the Author",
+          "item": "https://inknironapps.com/about/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": "https://inknironapps.com/about/",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Riley E. Antrobus",
+        "url": "https://inknironapps.com/",
+        "email": "riley@inknironapps.com",
+        "jobTitle": "Author",
+        "description": "Author of cinematic science fiction and Norse-flavored urban fantasy, including the Warborn Protocols series and the Echoes of Yggdrasil saga.",
+        "knowsAbout": [
+          "Science Fiction",
+          "Space Opera",
+          "Urban Fantasy",
+          "Norse Mythology",
+          "Software Development"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Ink & Iron Apps",
+          "url": "https://inknironapps.com/about/ink-iron-apps.html"
+        },
+        "sameAs": [
+          "https://www.facebook.com/people/Riley-E-Antrobus/61580037872318/",
+          "https://www.goodreads.com/author/show/58136422.Riley_E_Antrobus",
+          "https://www.amazon.com/author/rileyeantrobus"
+        ]
+      }
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="books-index">
+  <a class="back-link" href="/">&larr; Home</a>
+  <div class="kicker">About · The Author</div>
+  <h2>Riley E. <em>Antrobus</em>.</h2>
+  <p class="lede">Author of cinematic science fiction and Norse-flavored urban fantasy. Crafted Stories. <span class="amp">&amp;</span> Forged Software.</p>
+  <div class="essay">
+    <p>Riley E. Antrobus crafts adrenaline-fueled space adventures and myth-infused urban fantasies — stories where resilience, quick wit, and a healthy dose of chaos shape every journey. From the snark-filled <a href="/books/warborn-protocols/">Warborn Protocols</a> series to the Norse-inspired <a href="/books/echoes-of-yggdrasil/">Echoes of Yggdrasil</a> saga, Riley weaves cinematic action, sharp humor, and ancient mysteries into universes where underdogs, hidden powers, and impossible odds collide.</p>
+    <p>Beyond the page, Riley builds small, sharp software under the <a href="/about/ink-iron-apps.html">Ink &amp; Iron Apps</a> banner — proof that "Crafted Stories. Forged Software." is more than a tagline. When not conjuring interstellar mayhem or untangling ancient legends, Riley can be found buried in classic sci-fi and fantasy novels, building intricate spreadsheets for fun, or gazing up at the Colorado night sky in search of the next idea.</p>
+    <p class="pull">"Crafted stories. Forged software."</p>
+    <p>Find every book in <a href="/books/">the library</a>, or read about the software side at <a href="/about/ink-iron-apps.html">About Ink &amp; Iron Apps</a>.</p>
+    <div class="author-contact">
+      <span>Contact the author</span>
+      <a href="mailto:riley@inknironapps.com">riley@inknironapps.com</a>
+      <a href="https://www.facebook.com/people/Riley-E-Antrobus/61580037872318/" rel="noopener">Facebook</a>
+      <a href="https://www.goodreads.com/author/show/58136422.Riley_E_Antrobus" rel="noopener">Goodreads</a>
+      <a href="https://www.amazon.com/author/rileyeantrobus" rel="noopener">Amazon</a>
+    </div>
+  </div>
+
+  <aside class="related" aria-labelledby="about-related-heading">
+    <h2 id="about-related-heading">Explore</h2>
+    <div class="related-list">
+      <a class="related-card" href="/books/">
+        <div class="related-kicker">The Library</div>
+        <div class="related-title">All books</div>
+      </a>
+      <a class="related-card" href="/about/ink-iron-apps.html">
+        <div class="related-kicker">The software side</div>
+        <div class="related-title">About Ink &amp; Iron Apps</div>
+      </a>
+      <a class="related-card" href="/apps/">
+        <div class="related-kicker">The Workshop</div>
+        <div class="related-title">All apps</div>
+      </a>
+    </div>
+  </aside>
+</section>
+</Base>

@@ -103,10 +103,12 @@ npm run build     # astro build -> dist/
 npm run check     # exporter --check + build
 ```
 
-**`build.format: "file"` is load-bearing.** Astro's default emits directory
-URLs (`/books/<slug>/index.html`); the live site publishes `<slug>.html`.
-Changing it moves every book and app URL. Verified: the build emits
-`/smoke.html`, not `/smoke/index.html`.
+**`build.format: "preserve"` is load-bearing, and neither obvious option works.**
+The site uses a mixed convention: detail pages publish as `<slug>.html`, index
+pages as directory URLs (`/about/`, `/books/`, `/apps/`, `/books/<series>/`).
+`"directory"` moves every detail page; `"file"` flattens `about/index.astro` to
+`/about.html` and moves every index page. Only `"preserve"` keeps both. Verified:
+all five phase 03 pages build to the exact paths their live files occupy.
 
 No adapter — output is static, which Pages serves directly. Add
 `@astrojs/cloudflare` only when server routes actually arrive.
@@ -126,6 +128,28 @@ a shell-rendered page matched `terms.html` on all 30 head tags and the title.
 
 Pass plain text to `Head.astro` (`Ink & Iron Apps`, not `Ink &amp; Iron Apps`) —
 Astro escapes on output, so pre-escaped input double-encodes.
+
+### Converting a page (phases 03-05)
+
+```
+python3 scripts/convert_page.py terms.html about/index.html
+npx astro build && python3 scripts/parity_check.py --all dist/
+```
+
+`convert_page.py` reads head values out of the existing tags, takes the body
+verbatim from between `</nav>` and `<footer>`, and writes `src/pages/<path>.astro`.
+Re-running is safe and idempotent — reconvert rather than hand-editing a
+generated page, or the next conversion silently drops the edit.
+
+Two things it handles that hand-copying would miss:
+- Bare `<script>` gets `is:inline`, or Astro bundles it into a module and the
+  markup stops matching.
+- `twitter:title` / `twitter:description` are trimmed shorter than the OG text
+  on five pages (both about pages, matcalc, simmer, the Yggdrasil series
+  landing). They only emit when they actually differ.
+
+Phase 03 complete: terms, privacy-policy, contact, about/, about/ink-iron-apps
+— all five at parity.
 
 ## Branch strategy (overrides global)
 

@@ -1,0 +1,98 @@
+---
+// Transcribed from the hand-written page by scripts/convert_page.py.
+// Body is verbatim; head values come from the original tags.
+import Base from "../../layouts/Base.astro";
+const head = {
+  "title": "About Ink & Iron Apps — Maker",
+  "description": "About Ink & Iron Apps — small, sharp software for makers, readers, and small operations, built by Riley E. Antrobus. The software half of Crafted Stories. Forged Software.",
+  "keywords": "Ink and Iron Apps, about, indie software, Android apps, LibraryIQ, reading tracker web app, MatCalc, Simmer, Riley E. Antrobus, Crafted Stories Forged Software",
+  "path": "/about/ink-iron-apps.html",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "About Ink & Iron Apps — Maker",
+  "ogDescription": "Small, sharp software for makers, readers, and small operations. Crafted Stories. Forged Software.",
+  "image": "/og-image-1200x630.png",
+  "twitterDescription": "Small, sharp software for makers, readers, and small operations.",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inknironapps.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Ink & Iron Apps",
+          "item": "https://inknironapps.com/about/ink-iron-apps.html"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "url": "https://inknironapps.com/about/ink-iron-apps.html",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Ink & Iron Apps",
+        "url": "https://inknironapps.com/",
+        "slogan": "Crafted Stories. Forged Software.",
+        "email": "info@inknironapps.com",
+        "description": "Small, sharp software for makers, readers, and small operations, built by Riley E. Antrobus.",
+        "founder": {
+          "@type": "Person",
+          "name": "Riley E. Antrobus",
+          "url": "https://inknironapps.com/about/"
+        }
+      }
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="books-index">
+  <a class="back-link" href="/about/">&larr; About the Author</a>
+  <div class="kicker">About · The Maker</div>
+  <h2>Ink <span class="amp">&amp;</span> Iron <em>Apps</em>.</h2>
+  <p class="lede">Small, sharp tools for makers, readers, and small operations — the software half of <a href="/about/">Riley E. Antrobus</a>'s workshop.</p>
+  <div class="essay">
+    <p>Ink &amp; Iron Apps is the software side of one workshop. Same hands that write the books build the apps: stories that take their time, and tools that don't waste yours.</p>
+    <p class="pull">"Crafted stories. Forged software."</p>
+    <p>The philosophy is narrow on purpose — each app does one job well for the people who actually need it, rather than a sprawling suite that does everything adequately. Some run on the web so they work everywhere; others are Android first. No ads, no dark patterns, no selling your data.</p>
+    <p><a href="/apps/libraryiq.html">LibraryIQ</a> is <strong>live</strong> — a reading tracker you can open right now at <a href="https://libraryiq.inknironapps.com" rel="noopener">libraryiq.inknironapps.com</a>, free, with nothing to install. MatCalc and Simmer are still in <strong>closed alpha testing</strong> on Android — no Play Store release yet. Want to help shape one? <a href="/contact.html?topic=general">Pick an app on the contact form</a> to join alpha testing.</p>
+  </div>
+
+  <aside class="related" aria-labelledby="apps-related-heading">
+    <h2 id="apps-related-heading">The apps</h2>
+    <div class="related-list">
+      <a class="related-card" href="/apps/libraryiq.html">
+        <div class="related-kicker">Live · Web app</div>
+        <div class="related-title">LibraryIQ</div>
+      </a>
+      <a class="related-card" href="/apps/matcalc.html">
+        <div class="related-kicker">Closed alpha</div>
+        <div class="related-title">MatCalc</div>
+      </a>
+      <a class="related-card" href="/apps/simmer.html">
+        <div class="related-kicker">Closed alpha</div>
+        <div class="related-title">Simmer</div>
+      </a>
+    </div>
+  </aside>
+
+  <div class="essay">
+    <p>See all tools on the <a href="/apps/">apps page</a>, or read about the author behind them at <a href="/about/">About Riley E. Antrobus</a>.</p>
+    <div class="author-contact">
+      <span>Contact the workshop</span>
+      <a href="mailto:info@inknironapps.com">info@inknironapps.com</a>
+      <a href="mailto:support@inknironapps.com">support@inknironapps.com (app users)</a>
+    </div>
+  </div>
+</section>
+</Base>
