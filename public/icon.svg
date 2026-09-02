@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#0F1115"/>
+  <circle cx="216" cy="256" r="124" fill="none" stroke="#E8E4DA" stroke-width="1.5" opacity="0.55"/>
+  <circle cx="296" cy="256" r="124" fill="#095F73" opacity="0.5"/>
+  <text x="256" y="330"
+        font-family="'EB Garamond', Georgia, serif"
+        font-weight="500"
+        font-size="170"
+        fill="#E8E4DA"
+        text-anchor="middle"
+        letter-spacing="-2">I<tspan font-style="italic" font-weight="500" fill="#3BB3C9" dx="2">&amp;</tspan><tspan dx="2">I</tspan></text>
+</svg>

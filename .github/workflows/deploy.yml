@@ -1,0 +1,55 @@
+# Builds the Astro site and publishes it to GitHub Pages.
+#
+# Pages cannot run a build itself — it serves files. Before this workflow the
+# repo's hand-written .html at the root WAS the site; now dist/ is, so Pages
+# must be set to deploy from GitHub Actions (Settings -> Pages -> Source).
+#
+# books.json is committed deliberately: scripts/export_books.py reads the
+# writing vault, which does not exist on a runner. Regenerate it locally and
+# commit the result — never run the exporter here.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx astro build
+      - name: Fail if the build dropped a page
+        run: |
+          count=$(find dist -name '*.html' | wc -l)
+          echo "built $count pages"
+          test "$count" -eq 18 || { echo "expected 18 pages, got $count"; exit 1; }
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

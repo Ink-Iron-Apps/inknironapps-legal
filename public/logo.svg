@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 300" width="1100" height="300">
+  <rect width="1100" height="300" fill="#0F1115"/>
+  <!-- Mark -->
+  <g transform="translate(160, 150)">
+    <circle cx="-40" cy="0" r="84" fill="none" stroke="#E8E4DA" stroke-width="1.5" opacity="0.55"/>
+    <circle cx="40" cy="0" r="84" fill="#095F73" opacity="0.5"/>
+    <text x="0" y="50"
+          font-family="'EB Garamond', Georgia, serif"
+          font-weight="500"
+          font-size="118"
+          fill="#E8E4DA"
+          text-anchor="middle"
+          letter-spacing="-1.5">I<tspan font-style="italic" font-weight="500" fill="#3BB3C9" dx="1">&amp;</tspan><tspan dx="1">I</tspan></text>
+  </g>
+  <!-- Wordmark -->
+  <text x="320" y="160"
+        font-family="'EB Garamond', Georgia, serif"
+        font-weight="500"
+        font-size="68"
+        fill="#E8E4DA"
+        letter-spacing="-0.5">Ink <tspan font-style="italic" fill="#3BB3C9" font-weight="500">&amp;</tspan> Iron <tspan fill="#9CA3AF" font-weight="400" font-size="50">Apps</tspan></text>
+  <line x1="320" y1="190" x2="380" y2="190" stroke="#095F73" stroke-width="1.5"/>
+  <text x="320" y="220"
+        font-family="'EB Garamond', Georgia, serif"
+        font-style="italic"
+        font-size="20"
+        fill="#9CA3AF"
+        letter-spacing="0.5">Crafted stories. Forged software.</text>
+</svg>
