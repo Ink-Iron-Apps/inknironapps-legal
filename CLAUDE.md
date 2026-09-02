@@ -148,8 +148,11 @@ Two things it handles that hand-copying would miss:
   on five pages (both about pages, matcalc, simmer, the Yggdrasil series
   landing). They only emit when they actually differ.
 
-Phase 03 complete: terms, privacy-policy, contact, about/, about/ink-iron-apps
-— all five at parity.
+- `og:image:alt` / `twitter:image:alt` appear only on the three app detail
+  pages, and the Twitter alt is written shorter on matcalc and simmer.
+
+Phases 03-04 complete — 9/9 at parity: terms, privacy-policy, contact, about/,
+about/ink-iron-apps, apps/, apps/libraryiq, apps/matcalc, apps/simmer.
 
 ## Branch strategy (overrides global)
 

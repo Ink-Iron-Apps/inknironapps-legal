@@ -1,0 +1,316 @@
+---
+// Transcribed from the hand-written page by scripts/convert_page.py.
+// Body is verbatim; head values come from the original tags.
+import Base from "../../layouts/Base.astro";
+const head = {
+  "title": "MatCalc — Material Calculator for Coverage, Conversions, and Turf · Ink & Iron Apps",
+  "description": "MatCalc — calculate material coverage, conversions, and turf installation needs. Fast offline calculator for landscapers, contractors, and DIYers. Currently in closed alpha.",
+  "keywords": "MatCalc, material calculator, landscape calculator, gravel calculator, turf calculator, cubic yard calculator, contractor app, Ink and Iron Apps",
+  "path": "/apps/matcalc.html",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "MatCalc — Material Calculator for Coverage, Conversions, and Turf",
+  "ogDescription": "Fast offline material calculator for landscapers, contractors, and DIYers.",
+  "image": "/og-image-1200x630.png",
+  "twitterTitle": "MatCalc — Material Calculator",
+  "imageAlt": "MatCalc — material calculator for landscapers and contractors by Ink & Iron Apps",
+  "twitterImageAlt": "MatCalc — material calculator by Ink & Iron Apps",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inknironapps.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Apps",
+          "item": "https://inknironapps.com/apps/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MatCalc",
+          "item": "https://inknironapps.com/apps/matcalc.html"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "MatCalc",
+      "url": "https://inknironapps.com/apps/matcalc.html",
+      "image": "https://inknironapps.com/images/apps/matcalc.png",
+      "description": "Offline material calculator for landscapers, contractors, and DIYers. Coverage across 15 shapes, 12 preloaded materials, turf nail and infill estimator.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Android",
+      "softwareVersion": "alpha",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ink & Iron Apps",
+        "url": "https://inknironapps.com/"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Riley E. Antrobus",
+        "url": "https://inknironapps.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to calculate cubic yards of gravel with MatCalc",
+      "description": "Step-by-step workflow for calculating coverage, cubic yards, and tonnage for gravel, mulch, soil, or base rock using the MatCalc Android app.",
+      "totalTime": "PT2M",
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "MatCalc app (Android)"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Tape measure"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Pick a shape",
+          "text": "Open the Coverage tab and tap the shape that matches your area. MatCalc supports rectangle, square, triangle, circle, half circle, quarter circle, oval, annulus, trapezoid, parallelogram, rhombus, pentagon, hexagon, octagon, and L-shape."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Enter dimensions",
+          "text": "Enter length, width, and any other required dimensions in feet and inches. MatCalc accepts both so a 12'6\" bed does not need decimal conversion."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Set depth",
+          "text": "Set the material depth. Driveway gravel typically wants 4 inches, decorative mulch 2 to 3 inches, and base rock around 6 inches."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Pick a material",
+          "text": "Choose from the 12 preloaded materials or add a custom material with a custom coverage rate."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Read the results",
+          "text": "MatCalc returns square footage, cubic feet, cubic yards, and a tonnage range. Estimates include a settling adjustment and round up by default to avoid coming up short on delivery."
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does MatCalc work without internet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — fully offline. There is no account, no telemetry, and no network calls. Open the app on a job site with no signal and everything still works."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What shapes does the coverage calculator support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fifteen: Rectangle, Square, Triangle, Circle, Half Circle, Quarter Circle, Oval, Annulus, Trapezoid, Parallelogram, Rhombus, Pentagon, Hexagon, Octagon, and L-Shape."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which materials are preloaded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twelve materials across rounded rock (pea gravel, river rock), angular rock (crushed stone, drainage gravel), specialty stone (decomposed granite, lava rock), base materials (road base, crushed concrete), and soil and mulch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add my own materials?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Add a custom material with a custom coverage rate per cubic yard and it sticks around for the next job."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MatCalc handle artificial turf installation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The turf calculator returns square footage, perimeter, seam-nail count, grid-nail count, number of nail boxes, infill weight in pounds, and number of infill bags. Nail spacing, grid spacing, nails per box, infill rate, bag weight, and roll width are all adjustable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it account for settling and waste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tonnage and cubic-yard estimates include a settling adjustment by default, and rounding always favors over-ordering rather than coming up short."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MatCalc free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free for closed-alpha testers. Pricing at public launch will be determined before Play Store release."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MatCalc available on iOS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Android only. iOS may follow if there is clear demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I sign up to test MatCalc?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Request access through the contact form at https://inknironapps.com/contact.html?topic=alpha-matcalc. Include your device and Android version so we can shortlist you for the right test track."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="book-detail">
+  <a class="back-link" href="/apps/">&larr; All apps</a>
+  <div class="book-layout">
+    <aside class="book-cover">
+      <img src="/images/apps/matcalc.png" width="512" height="512" fetchpriority="high" decoding="async" alt="MatCalc app icon — offline material and turf calculator for Android" style="border-radius: 28px;">
+      <div class="book-meta">
+        <div class="meta-row"><span>Status</span><span>Closed alpha</span></div>
+        <div class="meta-row"><span>Platform</span><span>Android</span></div>
+        <div class="meta-row"><span>Mode</span><span>Fully offline</span></div>
+        <div class="meta-row"><span>For</span><span>Landscapers · Contractors · DIYers</span></div>
+        <div class="meta-row"><span>Publisher</span><span>Ink &amp; Iron Apps</span></div>
+      </div>
+      <div class="buy-stack">
+        <a class="btn btn-p" href="/contact.html?topic=alpha-matcalc">Request alpha access</a>
+      </div>
+      <div class="author-contact">
+        <span>App support</span>
+        <a href="mailto:support@inknironapps.com">support@inknironapps.com</a>
+      </div>
+    </aside>
+    <div class="book-body">
+      <div class="kicker">App · Alpha</div>
+      <h1>MatCalc</h1>
+      <p class="tagline"><em>Calculate material coverage, conversions, and turf installation needs.</em></p>
+      <div class="essay">
+        <p>MatCalc is a fast, offline material calculator built for landscapers, contractors, DIYers, and anyone working with bulk materials. Get accurate estimates for coverage, tonnage, cubic yardage, and artificial turf needs — all in one app with no internet connection required.</p>
+        <h3>Coverage calculator</h3>
+        <p>Calculate area and material needs for any project. Choose from 15 shapes — Rectangle, Square, Triangle, Circle, Half Circle, Quarter Circle, Oval, Annulus, Trapezoid, Parallelogram, Rhombus, Pentagon, Hexagon, Octagon, and L-Shape. Enter dimensions in feet and inches for precision. Pick from 12 preloaded materials across rounded rock, angular rock, specialty stone, base materials, and soil and mulch. Results show square footage, cubic feet, tonnage ranges, and cubic yard estimates with settling adjustment.</p>
+        <h3>Gallons to cubic yards converter</h3>
+        <p>Convert US gallons to cubic yards in a single tap. Always rounds up to two decimal places so you never underestimate. Single input, one number out, designed for on-site use.</p>
+        <h3>Turf calculator</h3>
+        <p>Plan artificial turf installations with accurate nail and infill estimates. Enter length and width and get total square footage, perimeter and seam and grid nail counts, number of nail boxes, infill weight in pounds, and number of infill bags. All settings are adjustable — nail spacing, grid spacing, nails per box, infill rate, bag weight, and roll width.</p>
+        <h3>Built for the field</h3>
+        <ul>
+          <li>Works completely offline — no internet required</li>
+          <li>Customizable materials with custom coverage rates</li>
+          <li>Calculation history kept for 30 days, tap to reload any entry</li>
+          <li>Dark and light themes follow device settings</li>
+          <li>Clean interface designed for one-handed use</li>
+          <li>Ranges that account for real-world settling and variation</li>
+        </ul>
+        <p>MatCalc is currently in closed alpha. <a href="/contact.html?topic=alpha-matcalc">request access via the contact form</a> if you want in.</p>
+      </div>
+
+      <section class="faq" aria-labelledby="matcalc-howto-heading">
+        <h2 id="matcalc-howto-heading">How to calculate cubic yards of gravel</h2>
+        <div class="essay">
+          <p>The same workflow handles mulch, soil, sand, and base rock. The settings in MatCalc default to landscape-grade material; adjust depth and material density for your specific project.</p>
+          <ol>
+            <li><strong>Pick a shape.</strong> Open the Coverage tab and tap the shape that matches your area — rectangle, circle, L-shape, hexagon, and 11 more.</li>
+            <li><strong>Enter dimensions in feet and inches.</strong> MatCalc accepts both, so a 12&prime;6&Prime; bed doesn&rsquo;t need decimal math.</li>
+            <li><strong>Set depth.</strong> Driveway gravel usually wants 4&Prime;; decorative mulch 2&Prime;–3&Prime;; base rock 6&Prime;.</li>
+            <li><strong>Pick a material.</strong> Twelve preloaded materials cover rounded rock, angular rock, specialty stone, base, and soil/mulch — or add your own with a custom coverage rate.</li>
+            <li><strong>Read the results.</strong> Square footage, cubic feet, cubic yards, and a tonnage range. MatCalc rounds up by default and applies a settling adjustment so you don&rsquo;t come up short on delivery day.</li>
+          </ol>
+          <p>Need to convert a delivery quote in gallons to cubic yards? The Gallons-to-Cubic-Yards converter does it in a single tap, always rounded up to two decimal places.</p>
+        </div>
+      </section>
+
+      <section class="faq" aria-labelledby="matcalc-faq-heading">
+        <h2 id="matcalc-faq-heading">Frequently asked</h2>
+        <details>
+          <summary>Does MatCalc work without internet?</summary>
+          <p>Yes — fully offline. There&rsquo;s no account, no telemetry, and no network calls. Open the app on a job site with no signal and everything still works.</p>
+        </details>
+        <details>
+          <summary>What shapes does the coverage calculator support?</summary>
+          <p>Fifteen: Rectangle, Square, Triangle, Circle, Half Circle, Quarter Circle, Oval, Annulus, Trapezoid, Parallelogram, Rhombus, Pentagon, Hexagon, Octagon, and L-Shape.</p>
+        </details>
+        <details>
+          <summary>Which materials are preloaded?</summary>
+          <p>Twelve materials across rounded rock (pea gravel, river rock), angular rock (crushed stone, drainage gravel), specialty stone (decomposed granite, lava rock), base materials (road base, crushed concrete), and soil and mulch.</p>
+        </details>
+        <details>
+          <summary>Can I add my own materials?</summary>
+          <p>Yes. Add a custom material with a custom coverage rate per cubic yard and it sticks around for the next job.</p>
+        </details>
+        <details>
+          <summary>Does MatCalc handle artificial turf installation?</summary>
+          <p>Yes. The turf calculator returns square footage, perimeter, seam-nail count, grid-nail count, number of nail boxes, infill weight in pounds, and number of infill bags. Nail spacing, grid spacing, nails per box, infill rate, bag weight, and roll width are all adjustable.</p>
+        </details>
+        <details>
+          <summary>Does it account for settling and waste?</summary>
+          <p>Tonnage and cubic-yard estimates include a settling adjustment by default, and rounding always favors over-ordering rather than coming up short.</p>
+        </details>
+        <details>
+          <summary>Is MatCalc free?</summary>
+          <p>Free for closed-alpha testers. Pricing at public launch will be determined before Play Store release.</p>
+        </details>
+        <details>
+          <summary>Available on iOS?</summary>
+          <p>Android only. iOS may follow if there&rsquo;s clear demand.</p>
+        </details>
+        <details>
+          <summary>How do I sign up to test?</summary>
+          <p><a href="/contact.html?topic=alpha-matcalc">Request access through the contact form.</a> Include your device and Android version so we can shortlist you for the right test track.</p>
+        </details>
+      </section>
+
+      <aside class="related" aria-labelledby="matcalc-related-heading">
+        <h2 id="matcalc-related-heading">More from the workshop</h2>
+        <div class="related-list">
+          <a class="related-card" href="/apps/libraryiq.html">
+            <div class="related-kicker">Workshop · App</div>
+            <div class="related-title">LibraryIQ</div>
+          </a>
+          <a class="related-card" href="/apps/simmer.html">
+            <div class="related-kicker">Workshop · App</div>
+            <div class="related-title">Simmer</div>
+          </a>
+          <a class="related-card" href="/books/">
+            <div class="related-kicker">Library · By the maker</div>
+            <div class="related-title">Books by Riley E. Antrobus</div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</Base>

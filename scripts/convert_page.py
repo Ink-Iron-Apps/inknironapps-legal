@@ -62,6 +62,13 @@ def extract(path: Path) -> tuple[dict, str]:
         props["twitterTitle"] = tw_title
     if tw_desc and tw_desc != props["ogDescription"]:
         props["twitterDescription"] = tw_desc
+    alt = meta(doc, "property", "og:image:alt")
+    tw_alt = meta(doc, "name", "twitter:image:alt")
+    if alt:
+        props["imageAlt"] = alt
+    if tw_alt and tw_alt != alt:
+        props["twitterImageAlt"] = tw_alt
+
     for part in ("first_name", "last_name"):
         v = meta(doc, "property", f"profile:{part}")
         if v:

@@ -1,0 +1,363 @@
+---
+// Transcribed from the hand-written page by scripts/convert_page.py.
+// Body is verbatim; head values come from the original tags.
+import Base from "../../layouts/Base.astro";
+const head = {
+  "title": "LibraryIQ — Reading Tracker & Library Web App · Ink & Iron Apps",
+  "description": "LibraryIQ — your complete reading tracker. Shelf, cover gallery, tracker table, wishlist and book budget in one installable web app. Scan a barcode, sync every device, own your data. Free to use at libraryiq.inknironapps.com.",
+  "keywords": "LibraryIQ, reading tracker, book tracker web app, personal library manager, book budget tracker, ISBN scanner, wishlist, Goodreads alternative, Ink and Iron Apps",
+  "path": "/apps/libraryiq.html",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "LibraryIQ — Reading Tracker & Library Web App",
+  "ogDescription": "Shelf, cover gallery, tracker table, wishlist and book budget in one installable web app. Free to use, syncs across every device.",
+  "image": "/og-image-1200x630.png",
+  "imageAlt": "LibraryIQ — reading tracker and library web app by Ink & Iron Apps",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "preconnect": [
+    "https://libraryiq.inknironapps.com"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inknironapps.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Apps",
+          "item": "https://inknironapps.com/apps/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "LibraryIQ",
+          "item": "https://inknironapps.com/apps/libraryiq.html"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "LibraryIQ",
+      "url": "https://libraryiq.inknironapps.com/",
+      "sameAs": "https://inknironapps.com/apps/libraryiq.html",
+      "installUrl": "https://libraryiq.inknironapps.com/",
+      "image": "https://inknironapps.com/images/apps/libraryiq.png",
+      "description": "Reading tracker and personal library manager that runs in the browser and installs to a home screen. Shelf, cover gallery, sortable tracker table, wishlist and book budget in one place, with barcode scanning, metadata lookup across six catalogues, collections, series and author pages, lending, badges and reading stats. Syncs across every signed-in device and works offline.",
+      "applicationCategory": "BookApplication",
+      "applicationSubCategory": "Reading tracker",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern browser with JavaScript enabled",
+      "softwareVersion": "3.1.0",
+      "featureList": [
+        "Bookshelf, cover gallery and sortable tracker table",
+        "Wishlist and book-spending budget",
+        "In-browser ISBN barcode scanning",
+        "Metadata lookup across Google Books, Open Library, Apple Books, Inventaire, Libris and OpenBD",
+        "AI shelf and cover recognition",
+        "Collections with smart rules, series and author pages",
+        "Reading goals, stats, badges and a year-in-books summary",
+        "Lending tracker",
+        "Offline support with cross-device sync",
+        "CSV and JSON export, Goodreads CSV import"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "The whole app, unlimited books, sync and export. Includes 20 AI requests a month; barcode scanning is never counted."
+        },
+        {
+          "@type": "Offer",
+          "name": "Reader",
+          "price": "5.00",
+          "priceCurrency": "USD",
+          "description": "1,000 AI requests a month.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "5.00",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Collector",
+          "price": "10.00",
+          "priceCurrency": "USD",
+          "description": "2,000 AI requests a month.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "10.00",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Archivist",
+          "price": "20.00",
+          "priceCurrency": "USD",
+          "description": "4,000 AI requests a month.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "20.00",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Curator",
+          "price": "50.00",
+          "priceCurrency": "USD",
+          "description": "10,000 AI requests a month.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "50.00",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Institution",
+          "price": "100.00",
+          "priceCurrency": "USD",
+          "description": "20,000 AI requests a month.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "100.00",
+            "priceCurrency": "USD",
+            "billingDuration": 1,
+            "billingIncrement": 1,
+            "unitCode": "MON"
+          }
+        }
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ink & Iron Apps",
+        "url": "https://inknironapps.com/"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Riley E. Antrobus",
+        "url": "https://inknironapps.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is LibraryIQ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A reading tracker and personal library manager that runs at libraryiq.inknironapps.com. It is a web app, so there is nothing to download — open the link, sign in with Google, and your library is there. It can also be installed to a phone or desktop home screen and then behaves like any other app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to install anything?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. LibraryIQ runs in any modern browser. If you want it on your home screen, use your browser's Install or Add to Home Screen option — it then opens full screen, keeps working offline, and updates itself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there still an Android app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The Android alpha has been replaced by the web app, which does more and runs everywhere. On Android, open libraryiq.inknironapps.com in Chrome and choose Install app — you get a home-screen icon, full-screen launch, offline support and the camera-based barcode scanner, with no store install required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does LibraryIQ cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The app is free. Unlimited books, every view, cross-device sync, barcode scanning and export cost nothing. Only AI requests are metered: the free plan includes 20 a month, and paid plans run from Reader at $5/month for 1,000 requests up to Institution at $100/month for 20,000. Barcode scanning is never counted against an allowance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use my own AI key instead of subscribing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Paste an Anthropic, OpenAI, Google or xAI key under AI features and the AI tools run unlimited on your own account with nothing counted against an allowance. Keys are stored against your account and never compiled into the page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The browser keeps a local mirror of your library, so it opens and edits offline. Changes queue up, survive a reload, and replay when you reconnect. Metadata lookup and AI features need a connection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does my data live, and can I get it out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In your own account on LibraryIQ's server, mirrored locally in your browser. Export gives you a full JSON backup or a CSV — either the complete spreadsheet or the narrower shape the Goodreads importer accepts. Deleting your account permanently erases it and everything in it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I bring my library over from Goodreads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Settings takes a Goodreads CSV export and merges it into what you already have, matching on ISBN, title and author so nothing arrives twice."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="book-detail">
+  <a class="back-link" href="/apps/">&larr; All apps</a>
+  <div class="book-layout">
+    <aside class="book-cover">
+      <img src="/images/apps/libraryiq.png" width="512" height="512" fetchpriority="high" decoding="async" alt="LibraryIQ app icon — reading tracker and library web app" style="border-radius: 28px;">
+      <div class="book-meta">
+        <div class="meta-row"><span>Status</span><span>Live</span></div>
+        <div class="meta-row"><span>Platform</span><span>Web app · any browser</span></div>
+        <div class="meta-row"><span>Install</span><span>Optional · add to home screen</span></div>
+        <div class="meta-row"><span>Sign-in</span><span>Google</span></div>
+        <div class="meta-row"><span>Price</span><span>Free · optional AI plans</span></div>
+        <div class="meta-row"><span>Publisher</span><span>Ink &amp; Iron Apps</span></div>
+      </div>
+      <div class="buy-stack">
+        <a class="btn btn-p" href="https://libraryiq.inknironapps.com" rel="noopener">Open LibraryIQ &rarr;</a>
+      </div>
+      <div class="author-contact">
+        <span>App support</span>
+        <a href="mailto:support@inknironapps.com">support@inknironapps.com</a>
+      </div>
+    </aside>
+    <div class="book-body">
+      <div class="kicker">App · Web</div>
+      <h1>LibraryIQ</h1>
+      <p class="tagline"><em>Your complete reading tracker — bookshelf, cover gallery, tracker table, wishlist and book budget in one place.</em></p>
+      <div class="essay">
+        <p>LibraryIQ lives at <a href="https://libraryiq.inknironapps.com" rel="noopener"><strong>libraryiq.inknironapps.com</strong></a>. There is nothing to download and no store to wait on — open the link, sign in with Google, and start adding books. It installs to a phone or desktop home screen if you want it there, keeps working when the signal drops, and syncs to every device you sign in to.</p>
+        <h3>Six ways to look at the same library</h3>
+        <ul>
+          <li><strong>Library</strong> — your home page. A reading-goal bar, headline stats, and every book you own drawn as a coloured spine on a wooden shelf. Click a spine for the detail.</li>
+          <li><strong>Gallery</strong> — every book as cover art, searchable and filterable by status or genre. Anything without a cover gets a generated one.</li>
+          <li><strong>Tracker</strong> — the full table. Status, rating, spice, progress, dates and cost, sortable by any column, editable inline.</li>
+          <li><strong>Wishlist</strong> — what you plan to buy and what you expect to pay, with a running total. Mark one purchased and it moves into the tracker keeping everything already typed.</li>
+          <li><strong>Budget</strong> — spending by genre, by format and month by month, filtered by year, with recurring costs like Audible or Kindle Unlimited tracked separately.</li>
+          <li><strong>Stats</strong> — pages and books over time, top authors and genres, and a Year in Books summary for any reading year.</li>
+        </ul>
+        <h3>Adding a book takes seconds</h3>
+        <p>Point your camera at a barcode and LibraryIQ reads the ISBN in the browser — no app install, no separate scanner. It then fills in title, author, cover, description, page count, publisher and series position from six catalogues: Google Books, Open Library, Apple Books, Inventaire, Libris and OpenBD. Or search by title and author, or type it in yourself — only title and author are required.</p>
+        <h3>Photograph a shelf <span style="opacity:.6;font-size:.7em">(AI)</span></h3>
+        <p>No barcode, or twenty books at once? Photograph the shelf, the stack, or a single cover. A vision model reads the spines and covers — including stylised type and angled shots — and hands back a list. Nothing is saved until you tick the ones that are right.</p>
+        <h3>Genres, series and authors</h3>
+        <p>AI classification gives every book a specific genre rather than "Fiction", and fills in content warnings if you want them. Series and author pages gather everything in one place. Collections group books however you like, and smart-collection rules populate themselves from criteria you set — rating, status, length, format, spice, whether you have written a review.</p>
+        <h3>Keeping the habit</h3>
+        <p>Set a yearly reading goal and watch it fill. Earn any of 85 badges across reading milestones, genre families, series completion, streaks, formats and lending. Watch an author and hear about their next book — checked nightly, with anything already on your shelf filtered out. And when nothing appeals, the What Next wheel narrows the pile by mood and spins for you.</p>
+        <h3>Lending, duplicates and trash</h3>
+        <p>Track who has your books and whose books you have; a loaned book is obvious on the shelf and returns to its old status when it comes back. Duplicate detection finds the same book twice by ISBN, by title and author, or by a subtitle mismatch — no AI and no key needed. Deleted books wait in the trash, grouped by the moment they were deleted, so a bulk delete comes back as the batch it was.</p>
+        <h3>Your data, on every device</h3>
+        <p>Your library syncs to every device you sign in to, and stays editable offline — changes queue up, survive a reload, and replay when you reconnect. Export gives you a full JSON backup or a CSV, either the complete spreadsheet or the narrower shape the Goodreads importer accepts. A Goodreads export imports back in the same way, merged against what you already have. Deleting your account erases it and everything in it, permanently.</p>
+        <h3>What it costs</h3>
+        <p>The app is free. Unlimited books, every view above, cross-device sync, barcode scanning and export cost nothing, and <strong>barcode scanning is never counted against any allowance</strong>. Only AI requests are metered:</p>
+        <ul>
+          <li><strong>Free</strong> — 20 AI requests a month.</li>
+          <li><strong>Reader ($5/mo)</strong> — 1,000 AI requests a month.</li>
+          <li><strong>Collector ($10/mo)</strong> — 2,000 AI requests a month.</li>
+          <li><strong>Archivist ($20/mo)</strong> — 4,000 AI requests a month.</li>
+          <li><strong>Curator ($50/mo)</strong> — 10,000 AI requests a month.</li>
+          <li><strong>Institution ($100/mo)</strong> — 20,000 AI requests a month.</li>
+        </ul>
+        <p>Or skip the subscription entirely: paste your own Anthropic, OpenAI, Google or xAI key under AI features and the AI tools run unlimited on your own account, costing you a fraction of a penny per scan.</p>
+        <p>Ready when you are — it takes a Google sign-in and one book to start.</p>
+      </div>
+
+      <div class="buy-stack">
+        <a class="btn btn-p" href="https://libraryiq.inknironapps.com" rel="noopener">Open LibraryIQ &rarr;</a>
+      </div>
+
+      <section class="faq" aria-labelledby="libraryiq-faq-heading">
+        <h2 id="libraryiq-faq-heading">Frequently asked</h2>
+        <details>
+          <summary>What is LibraryIQ?</summary>
+          <p>A reading tracker and personal library manager that runs at <a href="https://libraryiq.inknironapps.com" rel="noopener">libraryiq.inknironapps.com</a>. It is a web app, so there is nothing to download — open the link, sign in with Google, and your library is there. It can also be installed to a phone or desktop home screen and then behaves like any other app.</p>
+        </details>
+        <details>
+          <summary>Do I need to install anything?</summary>
+          <p>No. LibraryIQ runs in any modern browser. If you want it on your home screen, use your browser's <em>Install</em> or <em>Add to Home Screen</em> option — it then opens full screen, keeps working offline, and updates itself.</p>
+        </details>
+        <details>
+          <summary>Is there still an Android app?</summary>
+          <p>No. The Android alpha has been replaced by the web app, which does more and runs everywhere. On Android, open <a href="https://libraryiq.inknironapps.com" rel="noopener">libraryiq.inknironapps.com</a> in Chrome and choose <em>Install app</em> — you get a home-screen icon, full-screen launch, offline support and the camera barcode scanner, with no store install required.</p>
+        </details>
+        <details>
+          <summary>What does LibraryIQ cost?</summary>
+          <p>The app is free. Unlimited books, every view, cross-device sync, barcode scanning and export cost nothing. Only AI requests are metered: the free plan includes 20 a month, and paid plans run from Reader at $5/month for 1,000 requests up to Institution at $100/month for 20,000. Barcode scanning is never counted against an allowance.</p>
+        </details>
+        <details>
+          <summary>Can I use my own AI key instead of subscribing?</summary>
+          <p>Yes. Paste an Anthropic, OpenAI, Google or xAI key under <em>AI features</em> and the AI tools run unlimited on your own account with nothing counted against an allowance.</p>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes. The browser keeps a local mirror of your library, so it opens and edits offline. Changes queue up, survive a reload, and replay when you reconnect. Metadata lookup and AI features need a connection.</p>
+        </details>
+        <details>
+          <summary>Where does my data live, and can I get it out?</summary>
+          <p>In your own account on LibraryIQ's server, mirrored locally in your browser. Export gives you a full JSON backup or a CSV — either the complete spreadsheet or the narrower shape the Goodreads importer accepts. Deleting your account permanently erases it and everything in it.</p>
+        </details>
+        <details>
+          <summary>Can I bring my library over from Goodreads?</summary>
+          <p>Yes. Settings takes a Goodreads CSV export and merges it into what you already have, matching on ISBN, title and author so nothing arrives twice.</p>
+        </details>
+      </section>
+
+      <aside class="related" aria-labelledby="libraryiq-related-heading">
+        <h2 id="libraryiq-related-heading">More from the workshop</h2>
+        <div class="related-list">
+          <a class="related-card" href="/apps/matcalc.html">
+            <div class="related-kicker">Workshop · App</div>
+            <div class="related-title">MatCalc</div>
+          </a>
+          <a class="related-card" href="/apps/simmer.html">
+            <div class="related-kicker">Workshop · App</div>
+            <div class="related-title">Simmer</div>
+          </a>
+          <a class="related-card" href="/books/">
+            <div class="related-kicker">Library · By the maker</div>
+            <div class="related-title">Books by Riley E. Antrobus</div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</Base>

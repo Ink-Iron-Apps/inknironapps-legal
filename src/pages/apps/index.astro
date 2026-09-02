@@ -1,0 +1,174 @@
+---
+// Transcribed from the hand-written page by scripts/convert_page.py.
+// Body is verbatim; head values come from the original tags.
+import Base from "../../layouts/Base.astro";
+const head = {
+  "title": "Apps — Ink & Iron Apps",
+  "description": "The full catalogue of apps by Ink & Iron Apps — small, sharp tools for makers, readers, and small operations. LibraryIQ is live as a web app; MatCalc and Simmer are in closed alpha on Android.",
+  "keywords": "Ink and Iron Apps, LibraryIQ, reading tracker web app, MatCalc, Simmer, Android apps, indie apps, Riley E. Antrobus",
+  "path": "/apps/",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "Apps — Ink & Iron Apps",
+  "ogDescription": "Small, sharp tools for makers, readers, and small operations.",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inknironapps.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Apps",
+          "item": "https://inknironapps.com/apps/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Apps by Ink & Iron Apps",
+      "url": "https://inknironapps.com/apps/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ink & Iron Apps",
+        "url": "https://inknironapps.com/"
+      },
+      "hasPart": [
+        {
+          "@type": "WebApplication",
+          "name": "LibraryIQ",
+          "url": "https://libraryiq.inknironapps.com/",
+          "operatingSystem": "Any",
+          "applicationCategory": "BookApplication"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "MatCalc",
+          "url": "https://inknironapps.com/apps/matcalc.html",
+          "operatingSystem": "Android",
+          "applicationCategory": "UtilitiesApplication"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Simmer",
+          "url": "https://inknironapps.com/apps/simmer.html",
+          "operatingSystem": "Android",
+          "applicationCategory": "LifestyleApplication"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Apps by Ink & Iron Apps",
+      "url": "https://inknironapps.com/apps/",
+      "numberOfItems": 3,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://inknironapps.com/apps/libraryiq.html",
+          "item": {
+            "@type": "WebApplication",
+            "name": "LibraryIQ",
+            "url": "https://libraryiq.inknironapps.com/",
+            "sameAs": "https://inknironapps.com/apps/libraryiq.html",
+            "image": "https://inknironapps.com/images/apps/libraryiq.png",
+            "applicationCategory": "BookApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires a modern browser with JavaScript enabled",
+            "description": "Reading tracker and personal library manager in the browser. Shelf, cover gallery, tracker table, wishlist and book budget, with barcode scanning, metadata from six catalogues, AI shelf recognition, lending, badges and stats."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://inknironapps.com/apps/matcalc.html",
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "MatCalc",
+            "url": "https://inknironapps.com/apps/matcalc.html",
+            "image": "https://inknironapps.com/images/apps/matcalc.png",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Android",
+            "description": "Offline material calculator for landscapers, contractors, and DIYers. 15 shapes, 12 preloaded materials, turf installation calculator."
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://inknironapps.com/apps/simmer.html",
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Simmer",
+            "url": "https://inknironapps.com/apps/simmer.html",
+            "image": "https://inknironapps.com/images/apps/simmer.png",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Android",
+            "description": "Local-only recipe manager with no account. AI-powered import from URL or photo via BYOK OpenAI, Gemini, or Claude."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="books-index">
+  <a class="back-link" href="/">&larr; Home</a>
+  <div class="kicker">The Workshop</div>
+  <h2>Apps, <em>by Ink <span class="amp">&amp;</span> Iron Apps</em>.</h2>
+  <p class="lede">Small, sharp tools for makers, readers, and small operations. <strong>LibraryIQ</strong> is live as a web app — <a href="https://libraryiq.inknironapps.com" rel="noopener">open it in any browser</a>. MatCalc and Simmer are still in <strong>closed alpha testing</strong> on Android; want to test one? <a href="/contact.html?topic=general">Pick an app on the contact form</a>.</p>
+
+  <article class="app-card">
+    <div class="app-card-icon"><img src="/images/apps/libraryiq.png" width="512" height="512" loading="lazy" decoding="async" alt="LibraryIQ app icon — reading tracker and library web app"></div>
+    <div class="app-card-body">
+      <span class="num">Live · Web app</span>
+      <h3><a href="/apps/libraryiq.html">LibraryIQ</a></h3>
+      <p class="tagline"><em>Your complete reading tracker — shelf, gallery, tracker, wishlist and book budget in one place.</em></p>
+      <p>Live now as a web app at <strong>libraryiq.inknironapps.com</strong> — nothing to install. Scan a barcode in the browser, pull metadata from six catalogues, photograph a whole shelf, and track reading, lending, badges and book spending. Free, syncs to every device, installs to a home screen.</p>
+      <div class="editions">
+        <a class="edition-btn primary" href="https://libraryiq.inknironapps.com" rel="noopener">Open LibraryIQ &rarr;</a>
+        <a class="edition-btn ghost" href="/apps/libraryiq.html">Details &rsaquo;</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="app-card">
+    <div class="app-card-icon"><img src="/images/apps/matcalc.png" width="512" height="512" loading="lazy" decoding="async" alt="MatCalc app icon — material calculator for landscapers"></div>
+    <div class="app-card-body">
+      <span class="num">Alpha · Android</span>
+      <h3><a href="/apps/matcalc.html">MatCalc</a></h3>
+      <p class="tagline"><em>Calculate material coverage, conversions, and turf installation needs.</em></p>
+      <p>Fast offline calculator for landscapers, contractors, and DIYers. Coverage across 15 shapes, 12 preloaded materials, tonnage and cubic-yard estimates with settling adjustment.</p>
+      <div class="editions">
+        <a class="edition-btn ghost" href="/apps/matcalc.html">Details &rsaquo;</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="app-card">
+    <div class="app-card-icon"><img src="/images/apps/simmer.png" width="512" height="512" loading="lazy" decoding="async" alt="Simmer app icon — local recipe manager"></div>
+    <div class="app-card-body">
+      <span class="num">Alpha · Android</span>
+      <h3><a href="/apps/simmer.html">Simmer</a></h3>
+      <p class="tagline"><em>Collect, modify, and shop from your recipes with AI-powered imports.</em></p>
+      <p>Personal recipe manager — no account, no cloud, fully local. Import from URL, photo, or manual entry; AI extraction via your own OpenAI, Gemini, or Claude API key.</p>
+      <div class="editions">
+        <a class="edition-btn ghost" href="/apps/simmer.html">Details &rsaquo;</a>
+      </div>
+    </div>
+  </article>
+</section>
+</Base>
