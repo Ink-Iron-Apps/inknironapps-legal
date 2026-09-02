@@ -1,6 +1,9 @@
 # inknironapps-legal
 
-Static creator-hub site → `inknironapps.com` (CNAME → GH Pages, repo name retains "legal" for history).
+Astro site → `inknironapps.com` (GH Pages via Actions, repo name retains "legal"
+for history). Pages source is `src/pages/*.astro`; static assets live in
+`public/`. There are no hand-written `.html` files any more — the migration
+completed 2026-09-02.
 
 Two brands, one site:
 - **Riley E. Antrobus** — author identity (books, author email, Facebook)
@@ -193,7 +196,21 @@ Visible text and page titles are byte-identical on all five.
 
 ## Branch strategy (overrides global)
 
-Push direct `main`. No `claude/dev`. No CI gate. Pages deploys main on push.
+Push direct `main`. No `claude/dev`.
+
+**There is now a CI gate.** `.github/workflows/deploy.yml` runs `npm ci` +
+`astro build` and publishes `dist/` to Pages. A broken build means no deploy —
+it no longer means a broken page, it means the site does not update. The
+workflow asserts 18 pages built and fails rather than publishing a site that
+quietly lost one; bump that number when pages are added.
+
+Pages is set to **Source: GitHub Actions** (`build_type: workflow`), not a
+branch. Rollback is `gh api -X PUT repos/Ink-Iron-Apps/inknironapps-legal/pages
+-f build_type=legacy`, but the root `.html` it used to serve is gone, so a
+rollback needs a revert too.
+
+The workflow does NOT run `scripts/export_books.py` — that reads the writing
+vault, which no runner has. Regenerate `books.json` locally and commit it.
 
 ## Design system
 
