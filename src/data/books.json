@@ -9,16 +9,16 @@
       "live": 0
     },
     {
+      "slug": "echoes-of-flame",
+      "name": "Echoes of Flame",
+      "books": 1,
+      "live": 0
+    },
+    {
       "slug": "echoes-of-yggdrasil",
       "name": "Echoes of Yggdrasil",
       "books": 6,
       "live": 1
-    },
-    {
-      "slug": "echos-of-flame",
-      "name": "Echos of Flame",
-      "books": 1,
-      "live": 0
     },
     {
       "slug": "shattered-wyrm-armada",
@@ -131,6 +131,22 @@
       "vaultDir": "novels/series/ashes-of-the-drakon/books/book-01-ashes-of-the-drakon"
     },
     {
+      "slug": "starbound-mischief",
+      "title": "Starbound Mischief",
+      "status": "unpublished",
+      "series": {
+        "name": "Echoes of Flame",
+        "slug": "echoes-of-flame",
+        "position": 1
+      },
+      "words": 49900,
+      "editions": {},
+      "path": "/books/echoes-of-flame/starbound-mischief.html",
+      "image": "/images/books/starbound-mischief.jpg",
+      "coverSource": null,
+      "vaultDir": "novels/series/echos-of-flame/books/book-01-starbound-mischief"
+    },
+    {
       "slug": "the-nine-bridges",
       "title": "The Nine Bridges",
       "status": "live",
@@ -234,22 +250,6 @@
       "image": "/images/books/the-ravens-of-odin.jpg",
       "coverSource": null,
       "vaultDir": "novels/series/echoes-of-yggdrasil/books/book-06-the-ravens-of-odin"
-    },
-    {
-      "slug": "starbound-mischief",
-      "title": "Starbound Mischief",
-      "status": "unpublished",
-      "series": {
-        "name": "Echos of Flame",
-        "slug": "echos-of-flame",
-        "position": 1
-      },
-      "words": 49900,
-      "editions": {},
-      "path": "/books/echos-of-flame/starbound-mischief.html",
-      "image": "/images/books/starbound-mischief.jpg",
-      "coverSource": null,
-      "vaultDir": "novels/series/echos-of-flame/books/book-01-starbound-mischief"
     },
     {
       "slug": "shattered-wyrm-armada",
