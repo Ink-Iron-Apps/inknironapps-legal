@@ -1,2 +1,4 @@
 .firecrawl/
 .wrangler/
+__pycache__/
+*.pyc

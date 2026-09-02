@@ -62,6 +62,36 @@ LibraryIQ ships as a SaaS PWA at **`https://libraryiq.inknironapps.com`** (repo 
 - Pricing is sourced from `worker/src/billing.ts` (`TIERS`) and `FREE_AI_CALLS_PER_MONTH` in `worker/src/index.ts` — app free, only AI requests metered. Re-check both when the tier table changes; the `offers` array in the page JSON-LD mirrors them.
 - Contact-form topic is `libraryiq` ("LibraryIQ support"). The old `alpha-libraryiq` key is kept as a legacy alias in `worker/contact-worker.js` only — **redeploy that worker** after changing its topic maps (`wrangler deploy -c worker/wrangler.toml` — always with the config; a config-less deploy overrides the remote settings); GH Pages does not deploy it.
 
+### Book data export (Astro migration, phase 01)
+
+`scripts/export_books.py` builds `src/data/books.json` from the writing vault's
+`PUBLISHING_REGISTRY.md`. Run it after the registry changes:
+
+```
+python3 scripts/export_books.py            # regenerate
+python3 scripts/export_books.py --report   # live books with no page or cover
+python3 scripts/export_books.py --check    # exit 1 if stale (for CI)
+```
+
+**It exports identifiers only** — title, series position, status, ASINs, Amazon
+URLs, cover source. Page counts, publication dates, reading ages, taglines and
+body copy stay hand-authored in this repo, because the vault's figures are
+pre-publish estimates and were found wrong against Amazon on three of five
+books. Amazon is definitive for page counts and dates. The exporter can never
+overwrite copy.
+
+Output is deterministic (no timestamps), so `--check` is meaningful and
+re-running on unchanged input rewrites nothing. `books.json` is committed —
+Cloudflare's build container can't see the vault.
+
+Site slugs are URLs and must not move. Where a slugified title disagrees with
+the live URL it is pinned in `SLUG_OVERRIDES` (currently just *The Weaving of
+Eternal Tapestry* → `weaving-eternal-tapestry`). Add an override rather than
+letting a derived slug change a published address.
+
+Covers live at `<book>/cover/front_cover_ebook.jpg` for both series and
+standalone books; `cover-gen/` is legacy and still probed as a fallback.
+
 ## Branch strategy (overrides global)
 
 Push direct `main`. No `claude/dev`. No CI gate. Pages deploys main on push.
