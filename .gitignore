@@ -2,3 +2,8 @@
 .wrangler/
 __pycache__/
 *.pyc
+
+# Astro
+node_modules/
+dist/
+.astro/

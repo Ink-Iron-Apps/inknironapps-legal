@@ -92,6 +92,41 @@ letting a derived slug change a published address.
 Covers live at `<book>/cover/front_cover_ebook.jpg` for both series and
 standalone books; `cover-gen/` is legacy and still probed as a fallback.
 
+### Astro shell (phase 02)
+
+`astro.config.mjs` + `src/layouts/Base.astro` + `src/components/{Head,Nav,Footer}.astro`.
+The live hand-written `.html` pages are untouched and still what GitHub Pages
+serves — Astro coexists until the phase 06 cutover.
+
+```
+npm run build     # astro build -> dist/
+npm run check     # exporter --check + build
+```
+
+**`build.format: "file"` is load-bearing.** Astro's default emits directory
+URLs (`/books/<slug>/index.html`); the live site publishes `<slug>.html`.
+Changing it moves every book and app URL. Verified: the build emits
+`/smoke.html`, not `/smoke/index.html`.
+
+No adapter — output is static, which Pages serves directly. Add
+`@astrojs/cloudflare` only when server routes actually arrive.
+
+**Byte-parity with the hand-written HTML is impossible.** Astro re-encodes
+entities (`&amp;` → `&#38;`) and collapses whitespace between head tags. Both
+parse identically, so compare *meaning*, not bytes:
+
+```
+python3 scripts/parity_check.py terms.html dist/terms.html
+python3 scripts/parity_check.py --all dist/
+```
+
+It compares resolved head tags in order, title, JSON-LD as parsed objects, and
+visible text. Phase 06 cuts over when `--all` is clean. Verified at phase 02:
+a shell-rendered page matched `terms.html` on all 30 head tags and the title.
+
+Pass plain text to `Head.astro` (`Ink & Iron Apps`, not `Ink &amp; Iron Apps`) —
+Astro escapes on output, so pre-escaped input double-encodes.
+
 ## Branch strategy (overrides global)
 
 Push direct `main`. No `claude/dev`. No CI gate. Pages deploys main on push.

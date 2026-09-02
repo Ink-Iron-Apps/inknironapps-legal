@@ -1,0 +1,28 @@
+---
+/**
+ * The page shell every route renders into: <head> via Head.astro, then the
+ * nav and footer that are byte-identical across all 18 hand-written pages.
+ *
+ * Page-specific markup goes in the slot, which is everything the current
+ * pages put between </nav> and <footer>.
+ */
+import Head from "../components/Head.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import type { Props as HeadProps } from "../components/Head.astro";
+
+export type Props = HeadProps;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<Head {...Astro.props} />
+</head>
+<body>
+
+<Nav />
+<slot />
+<Footer />
+
+</body>
+</html>

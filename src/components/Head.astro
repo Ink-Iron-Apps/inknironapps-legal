@@ -1,0 +1,91 @@
+---
+/**
+ * Every <head> tag the site's SEO rules require, in the order the
+ * hand-written pages already emit them. Phase 06 diffs this output against
+ * the live markup, so tag order is load-bearing — don't rearrange.
+ *
+ * Defaults match the common case. Book and app pages override image and
+ * dimensions with their cover or icon; the two brand identities differ on
+ * ogSiteName (author pages say "Riley E. Antrobus", software pages say
+ * "Ink & Iron Apps").
+ */
+const SITE = "https://inknironapps.com";
+const OG_DEFAULT = `${SITE}/og-image-1200x630.png`;
+
+export interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+  /** Site-root-relative, e.g. "/books/the-recursion-engine.html" */
+  path: string;
+  ogType?: "website" | "book" | "profile";
+  ogSiteName?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  /** Extra origins to preconnect, e.g. the LibraryIQ SaaS host */
+  preconnect?: string[];
+  /** One object per <script type="application/ld+json"> block */
+  jsonld?: unknown[];
+}
+
+const {
+  title,
+  description,
+  keywords,
+  path,
+  ogType = "website",
+  ogSiteName = "Riley E. Antrobus",
+  ogTitle = title,
+  ogDescription = description,
+  image = OG_DEFAULT,
+  imageWidth = 1200,
+  imageHeight = 630,
+  preconnect = [],
+  jsonld = [],
+} = Astro.props;
+
+const url = `${SITE}${path}`;
+const absoluteImage = image.startsWith("http") ? image : `${SITE}${image}`;
+---
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="author" content="Riley E. Antrobus">
+<meta name="keywords" content={keywords}>
+<link rel="canonical" href={url}>
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0F1115">
+
+<meta property="og:type" content={ogType}>
+<meta property="og:url" content={url}>
+<meta property="og:site_name" content={ogSiteName}>
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content={ogTitle}>
+<meta property="og:description" content={ogDescription}>
+<meta property="og:image" content={absoluteImage}>
+<meta property="og:image:width" content={String(imageWidth)}>
+<meta property="og:image:height" content={String(imageHeight)}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={ogTitle}>
+<meta name="twitter:description" content={ogDescription}>
+<meta name="twitter:image" content={absoluteImage}>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{preconnect.map((href) => <link rel="preconnect" href={href}>)}
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+
+{jsonld.map((block) => (
+  <script type="application/ld+json" set:html={JSON.stringify(block, null, 2)} />
+))}

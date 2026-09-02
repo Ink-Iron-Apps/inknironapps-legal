@@ -1,0 +1,15 @@
+{
+  "name": "inknironapps-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "export": "python3 scripts/export_books.py",
+    "check": "python3 scripts/export_books.py --check && astro build"
+  },
+  "devDependencies": {
+    "astro": "^5.14.1"
+  }
+}
