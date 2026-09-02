@@ -151,8 +151,31 @@ Two things it handles that hand-copying would miss:
 - `og:image:alt` / `twitter:image:alt` appear only on the three app detail
   pages, and the Twitter alt is written shorter on matcalc and simmer.
 
-Phases 03-04 complete — 9/9 at parity: terms, privacy-policy, contact, about/,
-about/ink-iron-apps, apps/, apps/libraryiq, apps/matcalc, apps/simmer.
+- `book:author` / `book:release_date` on book detail pages.
+
+`parity_check.py` compares head tags (resolved, in order), title, JSON-LD as
+parsed objects, visible text, and body link hrefs. It does **not** compare body
+markup structure or non-href attributes — a class or heading-level change would
+pass. Read a converted page once before trusting it.
+
+Phases 03-05 complete. 13/18 at parity; the 5 book detail pages differ only by
+deliberate, recorded changes (see below).
+
+### Book detail pages are data-driven (phase 05)
+
+`src/layouts/BookDetail.astro` + a thin per-book page holding only copy. The
+layout derives cover, buy buttons, series row, breadcrumbs, page title,
+`alternateName` and the whole Book JSON-LD from `books.json`. Adding a book is a
+registry row plus one copy file — not eight edits across five files.
+
+Three deliberate deviations from the old hand-written output, all verified:
+- Amazon URLs normalised to the clean `/dp/<ASIN>` the registry mandates.
+  Only Fleet School Dropout (2 links) and Weaving (1) used long slug URLs.
+- `book:release_date` now emitted on all five books. Three previously lacked it.
+- `workExample` is always an array. Weaving, being Kindle-only, had a bare
+  object; an array of one is equally valid and removes the special case.
+
+Visible text and page titles are byte-identical on all five.
 
 ## Branch strategy (overrides global)
 

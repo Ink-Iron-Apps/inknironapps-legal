@@ -1,154 +1,48 @@
 ---
-// Transcribed from the hand-written page by scripts/convert_page.py.
-// Body is verbatim; head values come from the original tags.
-import Base from "../../../layouts/Base.astro";
-const head = {
-  "title": "Fleet School Dropout (Warborn Protocols, Book 1) — Riley E. Antrobus",
+// Copy only. Cover, buy links, series row, breadcrumbs and the Book
+// JSON-LD all derive from books.json via BookDetail.astro.
+import BookDetail from "../../../layouts/BookDetail.astro";
+const book = {
+  "slug": "fleet-school-dropout",
   "description": "Fleet School Dropout — Warborn Protocols Book 1 by Riley E. Antrobus. Military-edge science fiction. Available on Kindle and paperback.",
   "keywords": "Fleet School Dropout, Warborn Protocols Book 1, Riley E. Antrobus, military science fiction, space opera, Riko Vega, war AI novel, YA science fiction",
-  "path": "/books/warborn-protocols/fleet-school-dropout.html",
-  "ogType": "book",
-  "ogSiteName": "Riley E. Antrobus",
-  "ogTitle": "Fleet School Dropout (Warborn Protocols, Book 1)",
   "ogDescription": "They trained her to follow orders. She learned to break them.",
-  "image": "/images/books/fleet-school-dropout.jpg",
-  "bookAuthor": "Riley E. Antrobus",
-  "bookReleaseDate": "2025-08-04",
-  "imageWidth": 960,
-  "imageHeight": 1536,
-  "jsonld": [
+  "blurb": "Riko Vega — expelled cadet, bonded to a rogue war AI, and the spark that may reignite a war the Republic thought it buried.",
+  "coverAlt": "Fleet School Dropout book cover — Warborn Protocols Book 1 by Riley E. Antrobus",
+  "kicker": "№ 01 · Warborn Protocols",
+  "tagline": "They trained her to follow orders. She learned to break them.",
+  "published": "August 4, 2025",
+  "length": "120 pages",
+  "genre": [
+    "Science Fiction",
+    "Military Science Fiction"
+  ],
+  "relatedHeadingId": "fsd-related-heading",
+  "relatedHeading": "Continue the journey",
+  "related": [
     {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://inknironapps.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Books",
-          "item": "https://inknironapps.com/books/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Warborn Protocols",
-          "item": "https://inknironapps.com/books/warborn-protocols/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Fleet School Dropout",
-          "item": "https://inknironapps.com/books/warborn-protocols/fleet-school-dropout.html"
-        }
-      ]
+      "href": "/books/warborn-protocols/network-recruit.html",
+      "kicker": "Series · Book 2",
+      "title": "Network Recruit"
     },
     {
-      "@context": "https://schema.org",
-      "@type": "Book",
-      "name": "Fleet School Dropout",
-      "alternateName": "Fleet School Dropout (Warborn Protocols, Book 1)",
-      "url": "https://inknironapps.com/books/warborn-protocols/fleet-school-dropout.html",
-      "image": "https://inknironapps.com/images/books/fleet-school-dropout.jpg",
-      "description": "Riko Vega — expelled cadet, bonded to a rogue war AI, and the spark that may reignite a war the Republic thought it buried.",
-      "author": {
-        "@type": "Person",
-        "name": "Riley E. Antrobus",
-        "url": "https://inknironapps.com/"
-      },
-      "inLanguage": "en",
-      "datePublished": "2025-08-04",
-      "numberOfPages": 120,
-      "typicalAgeRange": "16-",
-      "genre": [
-        "Science Fiction",
-        "Military Science Fiction"
-      ],
-      "isPartOf": {
-        "@type": "BookSeries",
-        "name": "Warborn Protocols",
-        "url": "https://inknironapps.com/books/warborn-protocols/"
-      },
-      "position": 1,
-      "workExample": [
-        {
-          "@type": "Book",
-          "@id": "https://www.amazon.com/Fleet-School-Dropout-Warborn-Protocols-ebook/dp/B0FL4RQ33D/",
-          "bookFormat": "https://schema.org/EBook",
-          "isbn": "B0FL4RQ33D",
-          "url": "https://www.amazon.com/Fleet-School-Dropout-Warborn-Protocols-ebook/dp/B0FL4RQ33D/"
-        },
-        {
-          "@type": "Book",
-          "@id": "https://www.amazon.com/Fleet-School-Dropout-Warborn-Protocols/dp/B0FMQD6KJW/",
-          "bookFormat": "https://schema.org/Paperback",
-          "isbn": "B0FMQD6KJW",
-          "url": "https://www.amazon.com/Fleet-School-Dropout-Warborn-Protocols/dp/B0FMQD6KJW/"
-        }
-      ]
+      "href": "/books/warborn-protocols/",
+      "kicker": "Series page",
+      "title": "Warborn Protocols"
+    },
+    {
+      "href": "/books/weaving-eternal-tapestry.html",
+      "kicker": "Standalone · By the same author",
+      "title": "The Weaving of Eternal Tapestry"
     }
-  ]
+  ],
+  "readingAge": "16+",
+  "typicalAgeRange": "16-",
+  "audioComing": true
 };
 ---
-<Base {...head}>
-<section class="book-detail">
-  <a class="back-link" href="/books/warborn-protocols/">&larr; Warborn Protocols</a>
-  <div class="book-layout">
-    <aside class="book-cover">
-      <img src="/images/books/fleet-school-dropout.jpg" width="960" height="1536" fetchpriority="high" decoding="async" alt="Fleet School Dropout book cover — Warborn Protocols Book 1 by Riley E. Antrobus">
-      <div class="book-meta">
-        <div class="meta-row"><span>Series</span><span><a href="/books/warborn-protocols/">Warborn Protocols</a> · Book 1</span></div>
-        <div class="meta-row"><span>Author</span><span>Riley E. Antrobus</span></div>
-        <div class="meta-row"><span>Published</span><span>August 4, 2025</span></div>
-        <div class="meta-row"><span>Length</span><span>120 pages</span></div>
-        <div class="meta-row"><span>Reading age</span><span>16+</span></div>
-        <div class="meta-row"><span>Language</span><span>English</span></div>
-      </div>
-      <div class="buy-stack">
-        <a class="btn btn-p" href="https://www.amazon.com/Fleet-School-Dropout-Warborn-Protocols-ebook/dp/B0FL4RQ33D/" rel="noopener">Kindle Edition</a>
-        <a class="btn btn-s" href="https://www.amazon.com/Fleet-School-Dropout-Warborn-Protocols/dp/B0FMQD6KJW/" rel="noopener">Paperback</a>
-        <p class="audio-coming" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-bright);margin:12px 0 0;text-align:center;">Audiobook · Coming to Audible</p>
-      </div>
-      <div class="author-contact">
-        <span>Contact the author</span>
-        <a href="mailto:riley@inknironapps.com">riley@inknironapps.com</a>
-        <a href="https://www.facebook.com/people/Riley-E-Antrobus/61580037872318/" rel="noopener">Facebook</a>
-        <a href="https://www.goodreads.com/author/show/58136422.Riley_E_Antrobus" rel="noopener">Goodreads</a>
-        <a href="https://www.amazon.com/author/rileyeantrobus" rel="noopener">Amazon</a>
-      </div>
-    </aside>
-    <div class="book-body">
-      <div class="kicker">№ 01 · Warborn Protocols</div>
-      <h1>Fleet School Dropout</h1>
-      <p class="tagline"><em>They trained her to follow orders. She learned to break them.</em></p>
-      <div class="essay">
+<BookDetail {...book}>
         <p>Riko Vega was supposed to be the Republic's future — another bright cadet polished into perfection by Fleet School. Instead, she's their greatest liability. Expelled, disgraced, and bonded to a rogue war AI named Vesper, Riko is about to become something far more dangerous than anyone imagined.</p>
         <p>When a forgotten Ascendant facility stirs beneath the bones of a dead war, Riko and Vesper find themselves at the center of a conspiracy buried deep in the wreckage of the galaxy. Hunted by warlords, hunted by ghosts, and betrayed by the very command that trained her, Riko must decide who she is — before someone else decides for her.</p>
         <p>Armed with stolen tech, raw defiance, and an AI with attitude, Riko Vega might just become the spark that reignites a war the Republic thought it buried.</p>
-      </div>
-
-      <aside class="related" aria-labelledby="fsd-related-heading">
-        <h2 id="fsd-related-heading">Continue the journey</h2>
-        <div class="related-list">
-          <a class="related-card" href="/books/warborn-protocols/network-recruit.html">
-            <div class="related-kicker">Series · Book 2</div>
-            <div class="related-title">Network Recruit</div>
-          </a>
-          <a class="related-card" href="/books/warborn-protocols/">
-            <div class="related-kicker">Series page</div>
-            <div class="related-title">Warborn Protocols</div>
-          </a>
-          <a class="related-card" href="/books/weaving-eternal-tapestry.html">
-            <div class="related-kicker">Standalone · By the same author</div>
-            <div class="related-title">The Weaving of Eternal Tapestry</div>
-          </a>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-</Base>
+</BookDetail>

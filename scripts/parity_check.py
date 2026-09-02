@@ -39,6 +39,7 @@ class Doc(HTMLParser):
         self.title = ""
         self.jsonld: list[str] = []
         self.text: list[str] = []
+        self.links: list[str] = []
         self._in = {"head": False, "title": False, "ld": False, "body": False}
 
     def handle_starttag(self, tag, attrs):
@@ -51,6 +52,10 @@ class Doc(HTMLParser):
         elif tag == "script" and dict(attrs).get("type") == "application/ld+json":
             self._in["ld"] = True
             return
+        if self._in["body"] and tag == "a":
+            href = dict(attrs).get("href")
+            if href:
+                self.links.append(href)
         if self._in["head"] and tag in {"meta", "link"}:
             self.head.append((tag, tuple(sorted((k, v or "") for k, v in attrs))))
 
@@ -108,6 +113,14 @@ def compare(live: Path, built: Path) -> list[str]:
                 if x != y:
                     problems.append(f"JSON-LD block {i} differs "
                                     f"({x.get('@type')} vs {y.get('@type')})")
+
+    if a.links != b.links:
+        for h in [x for x in a.links if x not in b.links]:
+            problems.append(f"link only on live page: {h}")
+        for h in [x for x in b.links if x not in a.links]:
+            problems.append(f"link only on built page: {h}")
+        if a.links == b.links[::-1] or sorted(a.links) == sorted(b.links):
+            problems.append("same links, different order")
 
     if a.text != b.text:
         only_live = [t for t in a.text if t not in b.text]

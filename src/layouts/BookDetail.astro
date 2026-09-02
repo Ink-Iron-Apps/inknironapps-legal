@@ -1,0 +1,194 @@
+---
+/**
+ * A book detail page. Everything structural derives from books.json — the
+ * cover, the buy buttons, the series row, the breadcrumbs and the Book
+ * JSON-LD's workExample per edition. Everything written stays a prop.
+ *
+ * That split is the whole point of the migration: publishing book six means
+ * a registry row plus this page's copy, not eight edits across five files.
+ *
+ * Amazon URLs come from books.json, which holds the clean /dp/<ASIN> form
+ * the registry mandates. Three books previously used long slug URLs; those
+ * were normalised here deliberately.
+ */
+import Base from "./Base.astro";
+import data from "../data/books.json";
+
+const SITE = "https://inknironapps.com";
+const AUTHOR = "Riley E. Antrobus";
+
+export interface Props {
+  /** Key into books.json — supplies title, series, editions, cover, path. */
+  slug: string;
+  description: string;
+  keywords: string;
+  ogDescription: string;
+  /** The Book JSON-LD's description, which is written separately from the OG text. */
+  blurb: string;
+  coverAlt: string;
+  kicker: string;
+  tagline: string;
+  /** As published on Amazon, e.g. "August 4, 2025". */
+  published: string;
+  /** Paperback page count where a print edition exists, else Kindle length. */
+  length: string;
+  readingAge?: string;
+  /** Schema.org typicalAgeRange, e.g. "16-". Omitted when readingAge is. */
+  typicalAgeRange?: string;
+  language?: string;
+  /** Standalone books show "Format" where series books show "Series". */
+  formatValue?: string;
+  genre: string[];
+  audioComing?: boolean;
+  relatedHeadingId: string;
+  relatedHeading: string;
+  related: { href: string; kicker: string; title: string }[];
+}
+
+const {
+  slug, description, keywords, ogDescription, blurb, coverAlt, kicker, tagline,
+  published, length, readingAge, typicalAgeRange, language = "English",
+  formatValue, genre, audioComing = false,
+  relatedHeadingId, relatedHeading, related,
+} = Astro.props;
+
+const book = data.books.find((b) => b.slug === slug);
+if (!book) throw new Error(`No book "${slug}" in books.json — is the registry synced?`);
+
+const series = book.series;
+const seriesUrl = series ? `${SITE}/books/${series.slug}/` : null;
+const kindle = book.editions.kindle;
+const paperback = book.editions.paperback;
+
+const back = series
+  ? { href: `/books/${series.slug}/`, label: series.name }
+  : { href: "/books/", label: "All books" };
+
+const crumbs = [
+  { name: "Home", item: `${SITE}/` },
+  { name: "Books", item: `${SITE}/books/` },
+  ...(series ? [{ name: series.name, item: seriesUrl! }] : []),
+  { name: book.title, item: `${SITE}${book.path}` },
+];
+
+/** "Fleet School Dropout (Warborn Protocols, Book 1)" — also the JSON-LD alternateName. */
+const seriesLabel = series ? ` (${series.name}, Book ${series.position})` : "";
+
+const editions = [
+  kindle && { format: "EBook", asin: kindle.asin, url: kindle.url },
+  paperback && { format: "Paperback", asin: paperback.asin, url: paperback.url },
+].filter(Boolean) as { format: string; asin: string; url: string }[];
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem", position: i + 1, name: c.name, item: c.item,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: book.title,
+    ...(series ? { alternateName: `${book.title}${seriesLabel}` } : {}),
+    url: `${SITE}${book.path}`,
+    image: `${SITE}${book.image}`,
+    description: blurb,
+    author: { "@type": "Person", name: AUTHOR, url: `${SITE}/` },
+    inLanguage: "en",
+    datePublished: publishedIso(published),
+    numberOfPages: Number(length.replace(/\D/g, "")),
+    ...(typicalAgeRange ? { typicalAgeRange } : {}),
+    genre,
+    ...(series
+      ? {
+          isPartOf: { "@type": "BookSeries", name: series.name, url: seriesUrl },
+          position: series.position,
+        }
+      : {}),
+    workExample: editions.map((e) => ({
+      "@type": "Book",
+      "@id": e.url,
+      bookFormat: `https://schema.org/${e.format}`,
+      isbn: e.asin,
+      url: e.url,
+    })),
+  },
+];
+
+/** "August 4, 2025" -> "2025-08-04". The three places this date appears must agree. */
+function publishedIso(display: string): string {
+  const d = new Date(`${display} UTC`);
+  if (Number.isNaN(d.valueOf())) throw new Error(`Unparseable date: ${display}`);
+  return d.toISOString().slice(0, 10);
+}
+
+const head = {
+  title: `${book.title}${seriesLabel} — ${AUTHOR}`,
+  description, keywords,
+  path: book.path,
+  ogType: "book" as const,
+  ogSiteName: AUTHOR,
+  ogTitle: `${book.title}${seriesLabel}`,
+  ogDescription,
+  image: book.image,
+  imageWidth: 960,
+  imageHeight: 1536,
+  bookAuthor: AUTHOR,
+  bookReleaseDate: publishedIso(published),
+  jsonld,
+};
+---
+<Base {...head}>
+<section class="book-detail">
+  <a class="back-link" href={back.href}>&larr; {back.label}</a>
+  <div class="book-layout">
+    <aside class="book-cover">
+      <img src={book.image} width="960" height="1536" fetchpriority="high" decoding="async" alt={coverAlt}>
+      <div class="book-meta">
+        {series
+          ? <div class="meta-row"><span>Series</span><span><a href={`/books/${series.slug}/`}>{series.name}</a> · Book {series.position}</span></div>
+          : <div class="meta-row"><span>Format</span><span>{formatValue}</span></div>}
+        <div class="meta-row"><span>Author</span><span>{AUTHOR}</span></div>
+        <div class="meta-row"><span>Published</span><span>{published}</span></div>
+        <div class="meta-row"><span>Length</span><span>{length}</span></div>
+        {readingAge && <div class="meta-row"><span>Reading age</span><span>{readingAge}</span></div>}
+        <div class="meta-row"><span>Language</span><span>{language}</span></div>
+      </div>
+      <div class="buy-stack">
+        {kindle && <a class="btn btn-p" href={kindle.url} rel="noopener">Kindle Edition</a>}
+        {paperback && <a class="btn btn-s" href={paperback.url} rel="noopener">Paperback</a>}
+        {audioComing && <p class="audio-coming" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-bright);margin:12px 0 0;text-align:center;">Audiobook · Coming to Audible</p>}
+      </div>
+      <div class="author-contact">
+        <span>Contact the author</span>
+        <a href="mailto:riley@inknironapps.com">riley@inknironapps.com</a>
+        <a href="https://www.facebook.com/people/Riley-E-Antrobus/61580037872318/" rel="noopener">Facebook</a>
+        <a href="https://www.goodreads.com/author/show/58136422.Riley_E_Antrobus" rel="noopener">Goodreads</a>
+        <a href="https://www.amazon.com/author/rileyeantrobus" rel="noopener">Amazon</a>
+      </div>
+    </aside>
+    <div class="book-body">
+      <div class="kicker" set:html={kicker}></div>
+      <h1>{book.title}</h1>
+      <p class="tagline"><em>{tagline}</em></p>
+      <div class="essay">
+        <slot />
+      </div>
+
+      <aside class="related" aria-labelledby={relatedHeadingId}>
+        <h2 id={relatedHeadingId}>{relatedHeading}</h2>
+        <div class="related-list">
+          {related.map((r) => (
+            <a class="related-card" href={r.href}>
+              <div class="related-kicker">{r.kicker}</div>
+              <div class="related-title">{r.title}</div>
+            </a>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</Base>
