@@ -30,6 +30,11 @@ export interface Props {
   /** og:type="profile" pages carry these two extra tags. */
   profileFirstName?: string;
   profileLastName?: string;
+  /** og:type="book" pages. release_date is the Kindle publication date and
+   *  must agree with the Book JSON-LD's datePublished and the visible
+   *  "Published" row — it is the third place that date lives. */
+  bookAuthor?: string;
+  bookReleaseDate?: string;
   image?: string;
   imageWidth?: number;
   imageHeight?: number;
@@ -57,6 +62,8 @@ const {
   twitterDescription,
   profileFirstName,
   profileLastName,
+  bookAuthor,
+  bookReleaseDate,
   image = OG_DEFAULT,
   imageWidth = 1200,
   imageHeight = 630,
@@ -100,6 +107,8 @@ const absoluteImage = image.startsWith("http") ? image : `${SITE}${image}`;
 {imageAlt && <meta property="og:image:alt" content={imageAlt}>}
 {profileFirstName && <meta property="profile:first_name" content={profileFirstName}>}
 {profileLastName && <meta property="profile:last_name" content={profileLastName}>}
+{bookAuthor && <meta property="book:author" content={bookAuthor}>}
+{bookReleaseDate && <meta property="book:release_date" content={bookReleaseDate}>}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content={twTitle}>
 <meta name="twitter:description" content={twDescription}>
