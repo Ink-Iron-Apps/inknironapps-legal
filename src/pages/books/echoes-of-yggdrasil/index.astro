@@ -2,6 +2,10 @@
 // Transcribed from the hand-written page by scripts/convert_page.py.
 // Body is verbatim; head values come from the original tags.
 import Base from "../../../layouts/Base.astro";
+import BookCard from "../../../components/BookCard.astro";
+import bookData from "../../../data/books.json";
+const books = bookData.books;
+const num = (s) => `Book ${books.find(b => b.slug === s).series.position}`;
 const head = {
   "title": "Echoes of Yggdrasil — Riley E. Antrobus",
   "description": "Echoes of Yggdrasil — a Norse-mythology urban fantasy series by Riley E. Antrobus. A hidden world beneath Chicago, rune magic, and the bridges that hold the world together. Reading order and editions.",
@@ -82,22 +86,7 @@ const head = {
   <h2>Echoes of <em>Yggdrasil</em>.</h2>
   <p class="lede">Norse-mythology urban fantasy. A hidden world beneath Chicago — dwarven smiths, wight-brokers, rune-carved tunnels, and the nine bridges that hold the world together. A six-book arc; read in order.</p>
 
-  <article class="book-card">
-    <a class="book-card-cover" href="/books/echoes-of-yggdrasil/the-nine-bridges.html">
-      <img src="/images/books/the-nine-bridges.jpg" width="960" height="1536" loading="lazy" decoding="async" alt="The Nine Bridges book cover — Echoes of Yggdrasil Book 1">
-    </a>
-    <div class="book-card-body">
-      <span class="num">Book 1</span>
-      <h3><a href="/books/echoes-of-yggdrasil/the-nine-bridges.html">The Nine Bridges</a></h3>
-      <p class="tagline"><em>Beneath Chicago, nine bridges hold the world together. One of them is breaking.</em></p>
-      <p>Sixteen-year-old Astrid Eiriksen discovers a fracturing bridge beneath Union Station and a hidden Norse world tied to the mother who vanished thirteen years ago.</p>
-      <div class="editions">
-        <a class="edition-btn primary" href="https://www.amazon.com/dp/B0H3SYFYZZ" rel="noopener">Kindle</a>
-        <a class="edition-btn" href="https://www.amazon.com/dp/B0H3VFC8R3" rel="noopener">Paperback</a>
-        <a class="edition-btn ghost" href="/books/echoes-of-yggdrasil/the-nine-bridges.html">Details &rsaquo;</a>
-      </div>
-    </div>
-  </article>
+    <BookCard slug="the-nine-bridges" num={num("the-nine-bridges")} />
 
   <article class="book-card">
     <a class="book-card-cover" href="/contact.html?topic=author" style="background:rgba(9,95,115,0.12);border:1px solid rgba(232,228,218,0.08);aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;">

@@ -168,12 +168,26 @@ layout derives cover, buy buttons, series row, breadcrumbs, page title,
 `alternateName` and the whole Book JSON-LD from `books.json`. Adding a book is a
 registry row plus one copy file — not eight edits across five files.
 
-Three deliberate deviations from the old hand-written output, all verified:
+Listing pages too: `BookCard.astro` renders the card used on `/books/`, the
+series landings and the home page, and `/books/`'s `ItemList` JSON-LD —
+`numberOfItems` included — generates from the data.
+
+`src/data/copy.ts` holds the words. `tagline` really is shared across all four
+places a book appears. The blurbs are not: `cardBlurb` runs on `/books/` and the
+series landings, `homeBlurb` overrides it where the home page trims shorter (two
+books), and the detail page's Book JSON-LD description is different again. Same
+pattern as the twitter: descriptions — tighter contexts get shorter copy. Store
+an override only where the text actually differs.
+
+Four deliberate deviations from the old hand-written output, all verified:
 - Amazon URLs normalised to the clean `/dp/<ASIN>` the registry mandates.
   Only Fleet School Dropout (2 links) and Weaving (1) used long slug URLs.
 - `book:release_date` now emitted on all five books. Three previously lacked it.
 - `workExample` is always an array. Weaving, being Kindle-only, had a bare
   object; an array of one is equally valid and removes the special case.
+- Every `datePublished` in `/books/`'s ItemList is now correct. All five were
+  wrong or imprecise there — that block was a fourth copy of a date already
+  fixed in three other places.
 
 Visible text and page titles are byte-identical on all five.
 

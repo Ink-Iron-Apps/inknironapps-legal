@@ -1,0 +1,46 @@
+---
+/**
+ * One book card. Used on /books/, the home page and the series landings —
+ * the same markup in all three, differing only in the `num` label above the
+ * title and which alt text the cover uses.
+ *
+ * Cover, links and edition buttons come from books.json; tagline and blurb
+ * from copy.ts. Nothing about a card is written twice.
+ */
+import data from "../data/books.json";
+import { COPY } from "../data/copy";
+
+export interface Props {
+  slug: string;
+  /** The label above the title. HTML, because the index form links the series. */
+  num: string;
+  /** The home page trims some blurbs shorter and describes the cover artwork. */
+  variant?: "card" | "home";
+}
+
+const { slug, num, variant = "card" } = Astro.props;
+
+const book = data.books.find((b) => b.slug === slug);
+if (!book) throw new Error(`No book "${slug}" in books.json`);
+const copy = COPY[slug];
+if (!copy) throw new Error(`No copy for "${slug}" in copy.ts`);
+
+const kindle = book.editions.kindle;
+const paperback = book.editions.paperback;
+---
+<article class="book-card">
+  <a class="book-card-cover" href={book.path}>
+    <img src={book.image} width="960" height="1536" loading="lazy" decoding="async" alt={variant === "home" ? copy.homeAlt ?? copy.cardAlt : copy.cardAlt}>
+  </a>
+  <div class="book-card-body">
+    <span class="num" set:html={num}></span>
+    <h3><a href={book.path}>{book.title}</a></h3>
+    <p class="tagline"><em>{copy.tagline}</em></p>
+    <p>{variant === "home" ? copy.homeBlurb ?? copy.cardBlurb : copy.cardBlurb}</p>
+    <div class="editions">
+      {kindle && <a class="edition-btn primary" href={kindle.url} rel="noopener">Kindle</a>}
+      {paperback && <a class="edition-btn" href={paperback.url} rel="noopener">Paperback</a>}
+      <a class="edition-btn ghost" href={book.path}>Details &rsaquo;</a>
+    </div>
+  </div>
+</article>
