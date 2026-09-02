@@ -85,3 +85,35 @@ export const COPY: Record<string, BookCopy> = {
     "published": "September 7, 2025"
   }
 };
+
+/**
+ * Series landing configuration. `announced` names the unpublished books the
+ * site chooses to advertise — the registry only knows LIVE vs not, and it
+ * tracks 57 books, so which forthcoming titles get a card is a site decision,
+ * not a vault fact. Echoes of Yggdrasil has six books in the registry and
+ * announces exactly one.
+ */
+export const SERIES: Record<string, { genre: string[]; announced: string[] }> =
+  {
+  "warborn-protocols": {
+    "genre": [
+      "Science Fiction",
+      "Military Science Fiction",
+      "Space Opera"
+    ],
+    "announced": [
+      "otherwhere-witness"
+    ]
+  },
+  "echoes-of-yggdrasil": {
+    "genre": [
+      "Young Adult Fiction",
+      "Fantasy",
+      "Urban Fantasy",
+      "Norse Mythology"
+    ],
+    "announced": [
+      "the-draugr-pact"
+    ]
+  }
+};

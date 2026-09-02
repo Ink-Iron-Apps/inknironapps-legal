@@ -4,8 +4,39 @@
 import Base from "../../../layouts/Base.astro";
 import BookCard from "../../../components/BookCard.astro";
 import bookData from "../../../data/books.json";
+import { SERIES } from "../../../data/copy";
 const books = bookData.books;
 const num = (s) => `Book ${books.find(b => b.slug === s).series.position}`;
+const SITE = "https://inknironapps.com";
+const cfg = SERIES["warborn-protocols"];
+/** Generated so hasPart follows the data. Hand-maintained, this block had an
+ *  image on two of three books and not the third. Live books come from
+ *  books.json in series order; cfg.announced picks which forthcoming titles
+ *  the site advertises. */
+const seriesBooks = books
+  .filter((b) => b.series?.slug === "warborn-protocols" && b.status === "live")
+  .sort((a, b) => a.series.position - b.series.position)
+  .map((b) => ({
+    "@type": "Book",
+    name: b.title,
+    url: `${SITE}${b.path}`,
+    image: `${SITE}${b.image}`,
+    position: b.series.position,
+  }));
+const forthcoming = cfg.announced.map((slug) => {
+  const b = books.find((x) => x.slug === slug);
+  if (!b) throw new Error(`Announced book "${slug}" is not in books.json`);
+  return { "@type": "Book", name: b.title, position: b.series.position, bookEdition: "Forthcoming" };
+});
+const bookSeries = {
+  "@context": "https://schema.org",
+  "@type": "BookSeries",
+  name: "Warborn Protocols",
+  url: `${SITE}/books/warborn-protocols/`,
+  author: { "@type": "Person", name: "Riley E. Antrobus", url: `${SITE}/` },
+  genre: cfg.genre,
+  hasPart: [...seriesBooks, ...forthcoming].sort((a, b) => a.position - b.position),
+};
 const head = {
   "title": "Warborn Protocols — Riley E. Antrobus",
   "description": "Warborn Protocols — a military-edge science fiction series by Riley E. Antrobus. Reading order, lore, and editions.",
@@ -43,43 +74,7 @@ const head = {
         }
       ]
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BookSeries",
-      "name": "Warborn Protocols",
-      "url": "https://inknironapps.com/books/warborn-protocols/",
-      "author": {
-        "@type": "Person",
-        "name": "Riley E. Antrobus",
-        "url": "https://inknironapps.com/"
-      },
-      "genre": [
-        "Science Fiction",
-        "Military Science Fiction",
-        "Space Opera"
-      ],
-      "hasPart": [
-        {
-          "@type": "Book",
-          "name": "Fleet School Dropout",
-          "url": "https://inknironapps.com/books/warborn-protocols/fleet-school-dropout.html",
-          "position": 1
-        },
-        {
-          "@type": "Book",
-          "name": "Network Recruit",
-          "url": "https://inknironapps.com/books/warborn-protocols/network-recruit.html",
-          "image": "https://inknironapps.com/images/books/network-recruit.jpg",
-          "position": 2
-        },
-        {
-          "@type": "Book",
-          "name": "Otherwhere Witness",
-          "position": 3,
-          "bookEdition": "Forthcoming"
-        }
-      ]
-    }
+    bookSeries
   ]
 };
 ---

@@ -172,8 +172,14 @@ layout derives cover, buy buttons, series row, breadcrumbs, page title,
 registry row plus one copy file — not eight edits across five files.
 
 Listing pages too: `BookCard.astro` renders the card used on `/books/`, the
-series landings and the home page, and `/books/`'s `ItemList` JSON-LD —
-`numberOfItems` included — generates from the data.
+series landings and the home page; `/books/`'s `ItemList` JSON-LD —
+`numberOfItems` included — and both series landings' `BookSeries` / `hasPart`
+generate from the data.
+
+`SERIES` in `copy.ts` carries each series' genre list and its `announced`
+books. The registry only knows LIVE vs not and tracks 57 titles, so which
+forthcoming books get a card is a site decision, not a vault fact — Echoes of
+Yggdrasil has six books in the registry and announces one.
 
 `src/data/copy.ts` holds the words. `tagline` really is shared across all four
 places a book appears. The blurbs are not: `cardBlurb` runs on `/books/` and the
