@@ -200,11 +200,13 @@ Four deliberate deviations from the old hand-written output, all verified:
 
 Visible text and page titles are byte-identical on all five.
 
-## Branch strategy (overrides global)
+## Branch strategy
 
-Push direct `main`. No `claude/dev`.
+Push direct `main`. No `claude/dev`. This used to override the global rule;
+since 2026-09-02 it *is* the global rule — a branch is earned only by CI that
+blocks a merge, and nothing here does.
 
-**There is now a CI gate.** `.github/workflows/deploy.yml` runs `npm ci` +
+**There is a CI gate, but it gates the deploy, not the merge.** `.github/workflows/deploy.yml` runs `npm ci` +
 `astro build` and publishes `dist/` to Pages. A broken build means no deploy —
 it no longer means a broken page, it means the site does not update. The
 workflow runs `scripts/check_build.py`, which asserts every `.astro` under
