@@ -45,7 +45,16 @@ Covers: `<book>/cover/front_cover_ebook.jpg` (series) or `<book>/cover-gen/front
 Workflow when user says "registry updated, add new books":
 1. Diff registry `LIVE` rows vs pages already in `/books/`.
 2. For each new LIVE book: copy+resize cover, build detail page (+ series landing if new series), wire related-cards, add to `/books/` index (cards + both JSON-LD blocks + count), add to home `#books` cards + keywords, register in `sitemap.xml` + this page tree, bump `lastmod`.
-3. Editions: registry main tables = Kindle ASIN. If the book has a row in the registry's **Print (paperback) editions** section, also wire a Paperback button (`btn btn-s` on detail, plain `edition-btn` on cards) + a `Paperback` `workExample` in the Book JSON-LD (`workExample` becomes an array). No print row → Kindle only.
+3. Editions are generated, not wired by hand. The registry's main tables give
+   the Kindle ASIN; **Print (paperback) editions** and **Audiobook editions**
+   give the other two. `export_books.py` reads all three into `editions`, and
+   `BookDetail.astro` / `BookCard.astro` render whatever is present — a button
+   each, plus one `workExample` per edition in the Book JSON-LD. An audiobook
+   also emits `readBy` from the registry's Narrator column and a "Narrated by"
+   line under the buy stack. Add the registry row, re-run the exporter, done.
+   `audioComing: true` on a page prints "Audiobook · Coming to Audible"; it is
+   suppressed automatically once a real audiobook edition exists, but drop it
+   from the page anyway when you add the row.
 
 URL patterns:
 - Books: `/books/<series-slug>/<book-slug>.html` for series, `/books/<book-slug>.html` for standalone. Don't shorten slugs → SEO match titles. New book in existing series → drop in series folder. New series → new folder under `/books/`.
