@@ -207,8 +207,11 @@ Push direct `main`. No `claude/dev`.
 **There is now a CI gate.** `.github/workflows/deploy.yml` runs `npm ci` +
 `astro build` and publishes `dist/` to Pages. A broken build means no deploy —
 it no longer means a broken page, it means the site does not update. The
-workflow asserts 18 pages built and fails rather than publishing a site that
-quietly lost one; bump that number when pages are added.
+workflow runs `scripts/check_build.py`, which asserts every `.astro` under
+`src/pages` produced its `.html` (plus the sitemap route). It derives the
+expectation from the source, so adding a page needs no CI edit — publishing a
+book stays a one-step change — while a dropped or empty page still blocks the
+deploy.
 
 Pages is set to **Source: GitHub Actions** (`build_type: workflow`), not a
 branch. Rollback is `gh api -X PUT repos/Ink-Iron-Apps/inknironapps-legal/pages
