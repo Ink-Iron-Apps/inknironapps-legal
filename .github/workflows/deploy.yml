@@ -40,10 +40,9 @@ jobs:
       - run: npm ci
       - run: npx astro build
       - name: Fail if the build dropped a page
-        run: |
-          count=$(find dist -name '*.html' | wc -l)
-          echo "built $count pages"
-          test "$count" -eq 18 || { echo "expected 18 pages, got $count"; exit 1; }
+        # Derived from src/pages, not a literal count — adding a page raises
+        # the bar on its own, so publishing a book stays a one-step change.
+        run: python3 scripts/check_build.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
