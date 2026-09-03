@@ -59,6 +59,7 @@ const series = book.series;
 const seriesUrl = series ? `${SITE}/books/${series.slug}/` : null;
 const kindle = book.editions.kindle;
 const paperback = book.editions.paperback;
+const audiobook = book.editions.audiobook;
 
 const back = series
   ? { href: `/books/${series.slug}/`, label: series.name }
@@ -77,7 +78,9 @@ const seriesLabel = series ? ` (${series.name}, Book ${series.position})` : "";
 const editions = [
   kindle && { format: "EBook", asin: kindle.asin, url: kindle.url },
   paperback && { format: "Paperback", asin: paperback.asin, url: paperback.url },
-].filter(Boolean) as { format: string; asin: string; url: string }[];
+  audiobook && { format: "AudiobookFormat", asin: audiobook.asin, url: audiobook.url,
+                 narrator: audiobook.narrator },
+].filter(Boolean) as { format: string; asin: string; url: string; narrator?: string }[];
 
 const jsonld = [
   {
@@ -113,6 +116,9 @@ const jsonld = [
       bookFormat: `https://schema.org/${e.format}`,
       isbn: e.asin,
       url: e.url,
+      // schema.org readBy is specific to the audiobook edition, and the
+      // narrator is in the registry, so it costs nothing to say who read it.
+      ...(e.narrator ? { readBy: { "@type": "Person", name: e.narrator } } : {}),
     })),
   },
 ];
@@ -159,7 +165,9 @@ const head = {
       <div class="buy-stack">
         {kindle && <a class="btn btn-p" href={kindle.url} rel="noopener">Kindle Edition</a>}
         {paperback && <a class="btn btn-s" href={paperback.url} rel="noopener">Paperback</a>}
-        {audioComing && <p class="audio-coming" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-bright);margin:12px 0 0;text-align:center;">Audiobook · Coming to Audible</p>}
+        {audiobook && <a class="btn btn-s" href={audiobook.url} rel="noopener">Audiobook</a>}
+        {audiobook && audiobook.narrator && <p class="audio-narrator" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:10px 0 0;text-align:center;">Narrated by {audiobook.narrator}</p>}
+        {!audiobook && audioComing && <p class="audio-coming" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-bright);margin:12px 0 0;text-align:center;">Audiobook · Coming to Audible</p>}
       </div>
       <div class="author-contact">
         <span>Contact the author</span>

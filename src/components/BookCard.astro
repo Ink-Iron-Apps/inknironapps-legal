@@ -27,6 +27,7 @@ if (!copy) throw new Error(`No copy for "${slug}" in copy.ts`);
 
 const kindle = book.editions.kindle;
 const paperback = book.editions.paperback;
+const audiobook = book.editions.audiobook;
 ---
 <article class="book-card">
   <a class="book-card-cover" href={book.path}>
@@ -40,6 +41,7 @@ const paperback = book.editions.paperback;
     <div class="editions">
       {kindle && <a class="edition-btn primary" href={kindle.url} rel="noopener">Kindle</a>}
       {paperback && <a class="edition-btn" href={paperback.url} rel="noopener">Paperback</a>}
+      {audiobook && <a class="edition-btn" href={audiobook.url} rel="noopener">Audiobook</a>}
       <a class="edition-btn ghost" href={book.path}>Details &rsaquo;</a>
     </div>
   </div>

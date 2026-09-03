@@ -41,7 +41,7 @@ SLUG_OVERRIDES = {
 }
 
 # Sections of the registry that aren't series tables of books.
-NON_SERIES_SECTIONS = {"Print (paperback) editions"}
+NON_SERIES_SECTIONS = {"Print (paperback) editions", "Audiobook editions"}
 
 ROW = re.compile(r"^\|(?!\s*(?:Book|-))(.+)\|\s*$", re.M)
 
@@ -68,10 +68,11 @@ def unwrap(cell: str) -> str | None:
     return cell.strip("`").strip()
 
 
-def parse_registry(text: str) -> tuple[list[dict], dict[str, dict]]:
-    """Return (book rows, paperback rows by title)."""
+def parse_registry(text: str) -> tuple[list[dict], dict[str, dict], dict[str, dict]]:
+    """Return (book rows, paperback rows by title, audiobook rows by title)."""
     books: list[dict] = []
     paperbacks: dict[str, dict] = {}
+    audiobooks: dict[str, dict] = {}
     section = None
 
     for line in text.splitlines():
@@ -85,9 +86,16 @@ def parse_registry(text: str) -> tuple[list[dict], dict[str, dict]]:
         if not c or c[0] in {"Book", ""} or set(c[0]) <= {"-", ":"}:
             continue
 
-        if section in NON_SERIES_SECTIONS:
+        if section == "Print (paperback) editions":
             if len(c) >= 3:
                 paperbacks[c[0]] = {"asin": unwrap(c[1]), "url": unwrap(c[2])}
+            continue
+
+        if section == "Audiobook editions":
+            # Book | Audible ASIN | Audible URL | Narrator
+            if len(c) >= 4:
+                audiobooks[c[0]] = {"asin": unwrap(c[1]), "url": unwrap(c[2]),
+                                    "narrator": unwrap(c[3])}
             continue
 
         if len(c) < 6:
@@ -107,7 +115,7 @@ def parse_registry(text: str) -> tuple[list[dict], dict[str, dict]]:
             "url": unwrap(c[4]),
             "vault_dir": vault_dir,
         })
-    return books, paperbacks
+    return books, paperbacks, audiobooks
 
 
 def position(vault_dir: str | None) -> int | None:
@@ -132,7 +140,7 @@ def build(vault: Path) -> dict:
     registry = vault / "PUBLISHING_REGISTRY.md"
     if not registry.is_file():
         sys.exit(f"error: no registry at {registry}")
-    rows, paperbacks = parse_registry(registry.read_text(encoding="utf-8"))
+    rows, paperbacks, audiobooks = parse_registry(registry.read_text(encoding="utf-8"))
 
     books = []
     for r in rows:
@@ -153,6 +161,9 @@ def build(vault: Path) -> dict:
         pb = paperbacks.get(r["title"])
         if pb and pb.get("asin"):
             editions["paperback"] = pb
+        ab = audiobooks.get(r["title"])
+        if ab and ab.get("asin"):
+            editions["audiobook"] = ab
 
         books.append({
             "slug": slug,

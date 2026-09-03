@@ -107,6 +107,11 @@
         "kindle": {
           "asin": "B0FQ3HWKPW",
           "url": "https://www.amazon.com/dp/B0FQ3HWKPW"
+        },
+        "audiobook": {
+          "asin": "B0HC8774PS",
+          "url": "https://www.amazon.com/dp/B0HC8774PS",
+          "narrator": "Jane Reed"
         }
       },
       "path": "/books/weaving-eternal-tapestry.html",
