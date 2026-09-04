@@ -170,6 +170,7 @@ const head = {
         {paperback && <a class="btn btn-s" href={paperback.url} rel="noopener">Paperback</a>}
         {audiobook && <a class="btn btn-s" href={audiobook.url} rel="noopener">Audiobook</a>}
         {audiobook && audiobook.narrator && <p class="audio-narrator" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:10px 0 0;text-align:center;">Narrated by {audiobook.narrator}</p>}
+        {audiobook && audiobook.length && <p class="audio-length" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:4px 0 0;text-align:center;">{audiobook.length}</p>}
         {!audiobook && audioComing && <p class="audio-coming" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-bright);margin:12px 0 0;text-align:center;">Audiobook · Coming to Audible</p>}
       </div>
       <div class="author-contact">
