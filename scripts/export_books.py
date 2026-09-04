@@ -94,8 +94,11 @@ def parse_registry(text: str) -> tuple[list[dict], dict[str, dict], dict[str, di
         if section == "Audiobook editions":
             # Book | Audible ASIN | Audible URL | Narrator
             if len(c) >= 4:
+                length = unwrap(c[4]) if len(c) >= 5 else None
                 audiobooks[c[0]] = {"asin": unwrap(c[1]), "url": unwrap(c[2]),
-                                    "narrator": unwrap(c[3])}
+                                    "narrator": unwrap(c[3]),
+                                    "length": length,
+                                    "duration": iso_duration(length)}
             continue
 
         if len(c) < 6:
@@ -116,6 +119,19 @@ def parse_registry(text: str) -> tuple[list[dict], dict[str, dict], dict[str, di
             "vault_dir": vault_dir,
         })
     return books, paperbacks, audiobooks
+
+
+def iso_duration(text: str | None) -> str | None:
+    """"7 hrs and 23 mins" -> "PT7H23M". Audible states length in prose; the
+    Book JSON-LD needs ISO 8601. Returns None if the phrasing is unrecognised
+    rather than guessing, so a bad cell shows up as a missing duration."""
+    if not text:
+        return None
+    h = re.search(r"(\d+)\s*(?:hrs?|hours?)", text, re.I)
+    m = re.search(r"(\d+)\s*(?:mins?|minutes?)", text, re.I)
+    if not h and not m:
+        return None
+    return "PT" + (f"{int(h.group(1))}H" if h else "") + (f"{int(m.group(1))}M" if m else "")
 
 
 def position(vault_dir: str | None) -> int | None:
@@ -163,7 +179,7 @@ def build(vault: Path) -> dict:
             editions["paperback"] = pb
         ab = audiobooks.get(r["title"])
         if ab and ab.get("asin"):
-            editions["audiobook"] = ab
+            editions["audiobook"] = {k: v for k, v in ab.items() if v is not None}
 
         books.append({
             "slug": slug,

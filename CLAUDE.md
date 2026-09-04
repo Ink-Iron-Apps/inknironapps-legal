@@ -50,8 +50,12 @@ Workflow when user says "registry updated, add new books":
    give the other two. `export_books.py` reads all three into `editions`, and
    `BookDetail.astro` / `BookCard.astro` render whatever is present — a button
    each, plus one `workExample` per edition in the Book JSON-LD. An audiobook
-   also emits `readBy` from the registry's Narrator column and a "Narrated by"
-   line under the buy stack. Add the registry row, re-run the exporter, done.
+   also emits `readBy` from the registry's Narrator column, `duration` from its
+   Length column (the exporter converts "28 minutes" to `PT28M`; an
+   unrecognised phrasing yields no duration rather than a guess), and a
+   "Narrated by" line under the buy stack.
+   An audiobook has **two** ASINs — take the Audible one from the
+   `audible.com/pd/` URL, not the Amazon listing; the Amazon one 404s there. Add the registry row, re-run the exporter, done.
    `audioComing: true` on a page prints "Audiobook · Coming to Audible"; it is
    suppressed automatically once a real audiobook edition exists, but drop it
    from the page anyway when you add the row.

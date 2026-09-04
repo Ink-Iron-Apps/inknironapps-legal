@@ -79,8 +79,10 @@ const editions = [
   kindle && { format: "EBook", asin: kindle.asin, url: kindle.url },
   paperback && { format: "Paperback", asin: paperback.asin, url: paperback.url },
   audiobook && { format: "AudiobookFormat", asin: audiobook.asin, url: audiobook.url,
-                 narrator: audiobook.narrator },
-].filter(Boolean) as { format: string; asin: string; url: string; narrator?: string }[];
+                 narrator: audiobook.narrator, duration: audiobook.duration },
+].filter(Boolean) as {
+  format: string; asin: string; url: string; narrator?: string; duration?: string;
+}[];
 
 const jsonld = [
   {
@@ -119,6 +121,7 @@ const jsonld = [
       // schema.org readBy is specific to the audiobook edition, and the
       // narrator is in the registry, so it costs nothing to say who read it.
       ...(e.narrator ? { readBy: { "@type": "Person", name: e.narrator } } : {}),
+      ...(e.duration ? { duration: e.duration } : {}),
     })),
   },
 ];

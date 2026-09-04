@@ -111,7 +111,9 @@
         "audiobook": {
           "asin": "B0HC83N1DP",
           "url": "https://www.audible.com/pd/B0HC83N1DP",
-          "narrator": "Jane Reed"
+          "narrator": "Jane Reed",
+          "length": "28 minutes",
+          "duration": "PT28M"
         }
       },
       "path": "/books/weaving-eternal-tapestry.html",
