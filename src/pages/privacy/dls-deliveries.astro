@@ -1,0 +1,82 @@
+---
+// DLS Deliveries is an internal app built for Direct Landscape Supply staff,
+// published on Google Play's testing tracks. Google requires a public privacy
+// policy for it because it uses location. Every statement here is what the app
+// and its server (repo qmsync) actually do - check them before changing either.
+import Base from "../../layouts/Base.astro";
+const head = {
+  "title": "DLS Deliveries Privacy Policy — Ink & Iron Apps",
+  "description": "Privacy policy for DLS Deliveries, the delivery app Ink & Iron Apps builds for Direct Landscape Supply staff.",
+  "keywords": "DLS Deliveries privacy policy, Direct Landscape Supply, delivery app, Ink and Iron Apps",
+  "path": "/privacy/dls-deliveries.html",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "DLS Deliveries Privacy Policy — Ink & Iron Apps",
+  "ogDescription": "Crafted stories. Forged software.",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": []
+};
+---
+<Base {...head}>
+    <section>
+        <a href="/privacy-policy.html" class="back-link">&larr; Privacy Policy</a>
+        <div class="kicker">№ 01 · The Record</div>
+        <h2><em>DLS Deliveries</em> Privacy Policy.</h2>
+        <div class="essay">
+            <span class="effective-date">Effective Date · October 1, 2026</span>
+
+            <p>DLS Deliveries is an Android app that Ink &amp; Iron Apps ("we", "us") builds and operates for the staff and delivery drivers of Direct Landscape Supply. It shows the company's delivery schedule, lets drivers record a delivery's progress, and shows where delivery trucks are. It is not offered to the public: only people with a Direct Landscape Supply account can sign in. This policy covers this app only; our <a href="/privacy-policy.html">general privacy policy</a> covers our other apps.</p>
+
+            <h3>Signing In</h3>
+            <p>You sign in with your Direct Landscape Supply company account through the company's sign-in page in your browser. The app receives your email address, which identifies you to the delivery system, and a key for this phone so it stays signed in. Any administrator can sign a phone out at any time, which makes that key stop working immediately.</p>
+
+            <h3>Location</h3>
+            <p>The app uses your phone's precise location at two times only:</p>
+            <ul>
+                <li><strong>While you are sharing a delivery</strong>: from when you mark a delivery "En route" until it is delivered, you tap Stop, or a short while after you arrive. While it is sharing, Android shows a notification saying so, with a Stop button. The location is sent to the company's delivery server so the office can see where the truck is and estimate its arrival.</li>
+                <li><strong>At the moment you mark a delivery</strong> en route, arrived, delivered or a problem: one reading is saved with that record, showing where it was marked.</li>
+            </ul>
+            <p>The app does not collect location at any other time, and never in the background without that notification. Stored truck positions are deleted after two days; the single reading on a delivery record is kept with the record.</p>
+
+            <h3>Delivery Records and Photos</h3>
+            <p>When you mark a delivery (en route, arrived, delivered, or a problem), the app records the delivery, the time, your name, an optional note, and the location reading described above. A proof-of-delivery photo, if you take one, is uploaded to the company's server. Photos are deleted after 30 days; the delivery record itself is kept as part of the company's business records. You can also save a note or a pinned drop spot for a delivery site, which other staff will see on later deliveries there.</p>
+
+            <h3>Customer Information</h3>
+            <p>The app displays the company's own business records about its deliveries: customer names, delivery addresses, phone numbers, order contents and balances. These come from the company's order system. The app shows them to signed-in staff and does not collect them from your phone.</p>
+
+            <h3>Notifications</h3>
+            <p>If you allow notifications, the app registers with Firebase Cloud Messaging, a Google service, and sends the server a notification token so it can tell you about schedule changes. The token identifies the app on your phone, not you.</p>
+
+            <h3>What Is Stored on Your Phone</h3>
+            <p>The app keeps a copy of the current day's schedule on the phone so it keeps working without a signal, along with your sign-in key and settings such as which tab opens first. Signing out or uninstalling the app removes them.</p>
+
+            <h3>What We Do Not Do</h3>
+            <ul>
+                <li>No advertising, and no advertising identifiers.</li>
+                <li>No analytics or tracking services.</li>
+                <li>We do not sell or rent any information, and do not share it with anyone outside Direct Landscape Supply, except the service providers that run the system: Firebase Cloud Messaging (notifications) and Cloudflare (secure network access to the company's server).</li>
+            </ul>
+
+            <h3>Security</h3>
+            <p>Everything the app sends travels over encrypted connections to a server reachable only through the company's sign-in. Each phone has its own key, which can be revoked without affecting anyone else.</p>
+
+            <h3>Your Choices</h3>
+            <ul>
+                <li>You can stop sharing location at any time from the app's notification or the Driver page, or turn off the app's location permission in Android settings. The rest of the app keeps working.</li>
+                <li>You can turn notifications off in Android settings.</li>
+                <li>To have your account details or anything you recorded removed, ask a Direct Landscape Supply administrator, or contact us below. Delivery records the company must keep for its business may be retained.</li>
+            </ul>
+
+            <h3>Children</h3>
+            <p>The app is for Direct Landscape Supply staff only and is not intended for anyone under 18.</p>
+
+            <h3>Changes</h3>
+            <p>If this policy changes, the new version will be posted here with a new effective date.</p>
+
+            <h3>Contact</h3>
+            <p>Ink &amp; Iron Apps · <a href="mailto:info@inknironapps.com">info@inknironapps.com</a> · <a href="/contact.html">Contact form</a></p>
+        </div>
+    </section>
+</Base>

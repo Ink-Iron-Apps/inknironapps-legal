@@ -53,6 +53,7 @@ const BASELINE: Record<string, string> = {
   "/about/ink-iron-apps.html": "2026-08-30",
   "/contact.html": "2026-09-02",
   "/privacy-policy.html": "2026-09-02",
+  "/privacy/dls-deliveries.html": "2026-10-01",
   "/terms.html": "2026-09-02"
 };
 /** Pages whose output depends on book data, not just their own source. */
@@ -122,6 +123,7 @@ const entries: Entry[] = [
   { path: "/about/ink-iron-apps.html", src: "src/pages/about/ink-iron-apps.astro", changefreq: "monthly", priority: "0.6" },
   { path: "/contact.html", src: "src/pages/contact.astro", changefreq: "monthly", priority: "0.7" },
   { path: "/privacy-policy.html", src: "src/pages/privacy-policy.astro", changefreq: "yearly", priority: "0.3" },
+  { path: "/privacy/dls-deliveries.html", src: "src/pages/privacy/dls-deliveries.astro", changefreq: "yearly", priority: "0.2" },
   { path: "/terms.html", src: "src/pages/terms.astro", changefreq: "yearly", priority: "0.3" },
 ];
 

@@ -29,6 +29,7 @@ Two brands, one site:
 /about/                                                    → about the author (Riley E. Antrobus)
 /about/ink-iron-apps.html                                  → about the maker (Ink & Iron Apps)
 /privacy-policy.html                                       → legal (used by app store listings)
+/privacy/dls-deliveries.html                               → legal (DLS Deliveries, Play listing; facts from repo qmsync)
 /terms.html                                                → legal (used by app store listings)
 /sitemap.xml · /robots.txt                                 → SEO
 ```
