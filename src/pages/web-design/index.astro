@@ -14,7 +14,18 @@
  */
 import Base from "../../layouts/Base.astro";
 
-const PREVIEW = "/contact.html?topic=web-preview";
+const PREVIEW = "#preview";
+const ENDPOINT = "https://inknironapps-contact.padragantrbs.workers.dev/";
+const TRADES = [
+  "Landscaping / lawn care",
+  "Trades (plumbing, electrical, HVAC, roofing…)",
+  "Salon / barber",
+  "Pet grooming",
+  "Auto shop",
+  "Food / café",
+  "Fitness",
+  "Other",
+];
 
 const head = {
   "title": "Websites for Local Businesses — Ink & Iron Apps",
@@ -141,20 +152,109 @@ const head = {
     </details>
   </div>
 
-  <div class="essay wd-gap">
-    <p>Want to see what your business could look like? Send the name and your current site or page, and I'll build the preview.</p>
-    <div class="editions">
-      <a class="edition-btn primary" href={PREVIEW}>Ask for a free preview &rarr;</a>
-    </div>
-    <div class="author-contact">
-      <span>Or email the workshop</span>
-      <a href="mailto:info@inknironapps.com">info@inknironapps.com</a>
+  <div id="preview" class="wd-gap">
+    <div class="kicker">Free preview</div>
+    <h2>Ask for <em>your preview</em>.</h2>
+    <p class="lede">The more I know, the closer the first preview lands. Only the first six are required; the rest saves a round of emails.</p>
+
+    <div id="contact-status" class="contact-status" aria-live="polite"></div>
+
+    <form class="contact-form" method="POST" action={ENDPOINT}>
+      <input type="hidden" name="topic" value="web-preview">
+      <input type="hidden" name="_return" value="/web-design/">
+
+      <label>
+        <span>Your name</span>
+        <input type="text" name="name" required autocomplete="name" maxlength="120">
+      </label>
+      <label>
+        <span>Your email</span>
+        <input type="email" name="email" required autocomplete="email" maxlength="200">
+      </label>
+      <label>
+        <span>Business name</span>
+        <input type="text" name="business" required autocomplete="organization" maxlength="200">
+      </label>
+      <label>
+        <span>Type of business</span>
+        <select name="trade" required>
+          <option value="" disabled selected>Choose one</option>
+          {TRADES.map((t) => <option value={t}>{t}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>Town or service area</span>
+        <input type="text" name="area" required maxlength="200" placeholder="e.g. Windsor, Severance and Greeley">
+      </label>
+      <label>
+        <span>Where you are online now</span>
+        <textarea name="online" required rows="3" maxlength="1000" placeholder="Your website, Facebook page, Google listing or booking page links — or &quot;nothing yet&quot;"></textarea>
+      </label>
+
+      <div class="kicker wd-optional">Optional — helps the first preview</div>
+
+      <label>
+        <span>Main services</span>
+        <textarea name="services" rows="3" maxlength="1000" placeholder="What you do, in a line or two"></textarea>
+      </label>
+      <label>
+        <span>Phone to show on the site</span>
+        <input type="tel" name="phone" autocomplete="tel" maxlength="60">
+      </label>
+      <label>
+        <span>Hours</span>
+        <input type="text" name="hours" maxlength="300" placeholder="e.g. Mon–Fri 8–5, Sat by appointment">
+      </label>
+      <label>
+        <span>Booking tool you already use</span>
+        <input type="text" name="booking" maxlength="200" placeholder="Square, Vagaro, Calendly… or none">
+      </label>
+      <label>
+        <span>What should the site do better?</span>
+        <textarea name="goals" rows="4" maxlength="2000" placeholder="What you don't like about your current site, or what you want customers to do — call, book, ask for a quote"></textarea>
+      </label>
+      <label>
+        <span>Colors or logo to keep</span>
+        <input type="text" name="branding" maxlength="500" placeholder="e.g. green and white, keep the truck logo">
+      </label>
+
+      <!-- Honeypot — bots fill this, humans don't see it -->
+      <label class="honey" aria-hidden="true" tabindex="-1">
+        <span>Leave this field empty</span>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+      </label>
+
+      <button type="submit" class="btn btn-p">Send my preview request</button>
+    </form>
+
+    <div class="essay">
+      <div class="author-contact">
+        <span>Or email the workshop</span>
+        <a href="mailto:info@inknironapps.com">info@inknironapps.com</a>
+      </div>
     </div>
   </div>
 </section>
 
+<script is:inline>
+// Result banner from the contact worker's redirect (?sent=1 / ?error=…).
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var status = document.getElementById('contact-status');
+  if (params.get('sent') === '1') {
+    status.className = 'contact-status success';
+    status.textContent = "Request sent. I'll be in touch with your preview link.";
+  } else if (params.get('error')) {
+    status.className = 'contact-status error';
+    status.textContent = "Something went wrong. Check the required fields and try again, or email info@inknironapps.com.";
+  }
+})();
+</script>
+
 <style is:global>
 .web-design .wd-gap { margin-top: 64px; }
+.web-design .wd-optional { margin: 18px 0 0; }
+.web-design #preview .lede { margin-bottom: 28px; }
 .web-design .cols { margin-top: 24px; }
 .web-design .wd-tier { padding: 28px; border: 1px solid rgba(232, 228, 218, 0.10); border-radius: 6px; }
 .web-design .wd-tier h3 { font-size: 40px; }

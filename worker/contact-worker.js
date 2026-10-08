@@ -38,6 +38,27 @@ const TOPIC_LABELS = {
   "security":        "Security report",
 };
 
+// Pages that host their own form and get the result banner back on themselves.
+// Anything else returns to the contact page, so a forged field can't redirect.
+const RETURN_PATHS = {
+  "/web-design/": "/web-design/",
+};
+
+// Free website preview form (/web-design/): fields beyond name/email, in the
+// order they print in the brief. Required ones are checked before sending.
+const PREVIEW_FIELDS = [
+  ["business",   "Business",          true,  200],
+  ["trade",      "Type of business",  true,  80],
+  ["area",       "Town / area",       true,  200],
+  ["online",     "Online now",        true,  1000],
+  ["services",   "Main services",     false, 1000],
+  ["phone",      "Phone to show",     false, 60],
+  ["hours",      "Hours",             false, 300],
+  ["booking",    "Booking tool",      false, 200],
+  ["goals",      "Wants / dislikes",  false, 2000],
+  ["branding",   "Colors / logo",     false, 500],
+];
+
 export default {
   async fetch(request, env) {
     const allowedOrigin = env.ALLOWED_ORIGIN || SITE_ORIGIN_DEFAULT;
@@ -67,28 +88,46 @@ export default {
       return redirectBack(allowedOrigin, "error=parse");
     }
 
+    const returnPath = RETURN_PATHS[String(form.get("_return") || "")] || "/contact.html";
+    const back = (query) => redirectBack(allowedOrigin, query, returnPath);
+
     // Honeypot — bots fill, humans don't
     if ((form.get("_honey") || "").trim() !== "") {
       // Pretend success so bots don't retry
-      return redirectBack(allowedOrigin, "sent=1");
+      return back("sent=1");
     }
 
     const topic   = String(form.get("topic")   || "general").trim().toLowerCase();
     const name    = String(form.get("name")    || "").trim().slice(0, 120);
     const email   = String(form.get("email")   || "").trim().slice(0, 200);
-    const message = String(form.get("message") || "").trim().slice(0, 5000);
+    let message = String(form.get("message") || "").trim().slice(0, 5000);
+    let subjectLine = message;
+
+    if (topic === "web-preview" && form.has("business")) {
+      const vals = PREVIEW_FIELDS.map(([key, label, required, max]) =>
+        [label, required, String(form.get(key) || "").trim().slice(0, max)]);
+      if (vals.some(([, required, v]) => required && !v)) {
+        return back("error=missing");
+      }
+      const width = Math.max(...vals.map(([label]) => label.length)) + 2;
+      message = vals
+        .filter(([, , v]) => v)
+        .map(([label, , v]) => `${(label + ":").padEnd(width)}${v.replace(/\n/g, "\n" + " ".repeat(width))}`)
+        .join("\n");
+      subjectLine = `${vals[0][2]} — ${vals[1][2]}, ${vals[2][2]}`;
+    }
 
     if (!name || !email || !message) {
-      return redirectBack(allowedOrigin, "error=missing");
+      return back("error=missing");
     }
 
     if (!isValidEmail(email)) {
-      return redirectBack(allowedOrigin, "error=email");
+      return back("error=email");
     }
 
     const to = ROUTES[topic] || ROUTES["general"];
     const topicLabel = TOPIC_LABELS[topic] || "General inquiry";
-    const subject = `[${topicLabel}] ${truncate(message, 60)}`;
+    const subject = `[${topicLabel}] ${truncate(subjectLine, 60)}`;
 
     const textBody = [
       `Topic:   ${topicLabel}  (${topic})`,
@@ -123,14 +162,14 @@ export default {
       if (!resp.ok) {
         const errText = await resp.text();
         console.error("Resend error:", resp.status, errText);
-        return redirectBack(allowedOrigin, "error=send");
+        return back("error=send");
       }
     } catch (e) {
       console.error("Fetch to Resend failed:", e);
-      return redirectBack(allowedOrigin, "error=network");
+      return back("error=network");
     }
 
-    return redirectBack(allowedOrigin, "sent=1");
+    return back("sent=1");
   },
 };
 
@@ -143,8 +182,9 @@ function corsHeaders(origin) {
   };
 }
 
-function redirectBack(origin, query) {
-  return Response.redirect(`${origin}/contact.html?${query}`, 303);
+function redirectBack(origin, query, path = "/contact.html") {
+  const anchor = path === "/contact.html" ? "" : "#preview";
+  return Response.redirect(`${origin}${path}?${query}${anchor}`, 303);
 }
 
 function isValidEmail(value) {
