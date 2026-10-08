@@ -10,15 +10,18 @@
  * Renders nothing at all while the list is empty: no heading, no placeholder.
  */
 import entries from "../data/portfolio.json";
+// Also rendered in full on /work/, which hides itself while this is empty.
 
 interface Props {
   /** Show at most this many, newest first. */
   limit?: number;
   /** Kicker above the grid. */
   kicker?: string;
+  /** Link to /work/ under the grid (only shown when entries exist). */
+  allLink?: boolean;
 }
 
-const { limit, kicker = "Recent work" } = Astro.props;
+const { limit, kicker = "Recent work", allLink = false } = Astro.props;
 
 const sites = (entries as any[])
   .filter((e) => e && e.slug && e.name && e.url && e.image)
@@ -38,6 +41,11 @@ const sites = (entries as any[])
         </a>
       ))}
     </div>
+    {allLink && (
+      <div class="section-foot">
+        <a class="link-arrow" href="/work/">See all work &rsaquo;</a>
+      </div>
+    )}
   </div>
 )}
 

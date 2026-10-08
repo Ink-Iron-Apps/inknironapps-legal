@@ -25,6 +25,8 @@ Two brands, one site:
 /apps/libraryiq.html                                       → app detail
 /apps/matcalc.html                                         → app detail
 /apps/simmer.html                                          → app detail
+/web-design/                                               → local-business website service + preview form
+/work/                                                     → portfolio of sold client sites (hidden while empty)
 /about/                                                    → about the author (Riley E. Antrobus)
 /about/ink-iron-apps.html                                  → about the maker (Ink & Iron Apps)
 /privacy-policy.html                                       → legal (used by app store listings)
@@ -264,6 +266,9 @@ Every page must have:
 `src/components/Portfolio.astro` renders "Recent work" on `/web-design/` and
 (up to three) in the home page web-design section, newest `live` date first.
 It renders nothing while the array is empty: no heading, no placeholder.
+`/work/` lists every entry; the home section links to it ("See all work").
+While the array is empty `/work/` still builds but is linked from nowhere,
+left out of the sitemap, and carries `noindex` (Head.astro's `noindex` prop).
 
 The client-sites session owns `portfolio.json` and `public/portfolio/<slug>.jpg`
 (1280x800 desktop screenshots). It lists a client site only while it is sold,

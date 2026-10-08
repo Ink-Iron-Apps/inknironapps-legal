@@ -47,6 +47,8 @@ export interface Props {
   preconnect?: string[];
   /** One object per <script type="application/ld+json"> block */
   jsonld?: unknown[];
+  /** Keep the page out of search results (e.g. /work/ while it is empty). */
+  noindex?: boolean;
 }
 
 const {
@@ -71,6 +73,7 @@ const {
   twitterImageAlt,
   preconnect = [],
   jsonld = [],
+  noindex = false,
 } = Astro.props;
 
 const url = `${SITE}${path}`;
@@ -86,6 +89,7 @@ const absoluteImage = image.startsWith("http") ? image : `${SITE}${image}`;
 <meta name="author" content="Riley E. Antrobus">
 <meta name="keywords" content={keywords}>
 <link rel="canonical" href={url}>
+{noindex && <meta name="robots" content="noindex">}
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">

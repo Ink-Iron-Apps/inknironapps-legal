@@ -18,6 +18,7 @@
  * so index pages cannot simply be inferred.
  */
 import type { APIRoute } from "astro";
+import portfolio from "../data/portfolio.json";
 import { execFileSync } from "node:child_process";
 import data from "../data/books.json";
 
@@ -119,6 +120,10 @@ const entries: Entry[] = [
   { path: "/apps/matcalc.html", src: "src/pages/apps/matcalc.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/apps/simmer.html", src: "src/pages/apps/simmer.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/web-design/", src: "src/pages/web-design/index.astro", changefreq: "monthly", priority: "0.8" },
+  // /work/ is listed only once there is work to show.
+  ...((portfolio as unknown[]).length > 0
+    ? [{ path: "/work/", src: "src/data/portfolio.json", changefreq: "weekly", priority: "0.7" }]
+    : []),
   { path: "/about/", src: "src/pages/about/index.astro", changefreq: "monthly", priority: "0.7" },
   { path: "/about/ink-iron-apps.html", src: "src/pages/about/ink-iron-apps.astro", changefreq: "monthly", priority: "0.6" },
   { path: "/contact.html", src: "src/pages/contact.astro", changefreq: "monthly", priority: "0.7" },

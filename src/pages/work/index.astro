@@ -1,0 +1,58 @@
+---
+/**
+ * /work/ — every client site in the portfolio, newest first.
+ *
+ * Entries come from src/data/portfolio.json, which the client-sites session
+ * writes (see Portfolio.astro). While the list is empty this page still
+ * builds, but nothing links to it, the sitemap leaves it out, and it carries
+ * noindex: an empty portfolio is never advertised.
+ */
+import Base from "../../layouts/Base.astro";
+import Portfolio from "../../components/Portfolio.astro";
+import entries from "../../data/portfolio.json";
+
+const empty = (entries as unknown[]).length === 0;
+
+const head = {
+  "title": "Recent Work — Ink & Iron Apps Web Design",
+  "description": "Websites built by Ink & Iron Apps for small businesses in Northern Colorado, live on their owners' own domains.",
+  "keywords": "Ink and Iron Apps portfolio, web design Northern Colorado, small business websites, Windsor web design",
+  "path": "/work/",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "noindex": empty,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://inknironapps.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Web Design", "item": "https://inknironapps.com/web-design/" },
+        { "@type": "ListItem", "position": 3, "name": "Recent Work", "item": "https://inknironapps.com/work/" }
+      ]
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="books-index">
+  <a class="back-link" href="/web-design/">&larr; Web Design</a>
+  <div class="kicker">Ink &amp; Iron Apps · Web Design</div>
+  <h2>Recent <em>work</em>.</h2>
+  {empty ? (
+    <p class="lede">First sites coming soon.</p>
+  ) : (
+    <p class="lede">Sites built for local businesses, live on their owners' own domains.</p>
+  )}
+
+  <Portfolio kicker="All sites" />
+
+  <div class="editions" style="margin-top:48px;">
+    <a class="edition-btn primary" href="/web-design/#preview">Ask for a free preview &rarr;</a>
+    <a class="edition-btn ghost" href="/web-design/#packages">See packages &rsaquo;</a>
+  </div>
+</section>
+</Base>
