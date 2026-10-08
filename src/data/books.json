@@ -948,6 +948,13 @@
         "paperback": {
           "asin": "B0FMQD6KJW",
           "url": "https://www.amazon.com/dp/B0FMQD6KJW"
+        },
+        "audiobook": {
+          "asin": "B0HJN76K7L",
+          "url": "https://www.audible.com/pd/B0HJN76K7L",
+          "narrator": "Lacy Dunn",
+          "length": "3 hrs and 55 mins",
+          "duration": "PT3H55M"
         }
       },
       "path": "/books/warborn-protocols/fleet-school-dropout.html",

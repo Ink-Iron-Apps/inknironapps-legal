@@ -118,6 +118,7 @@ const entries: Entry[] = [
   { path: "/apps/libraryiq.html", src: "src/pages/apps/libraryiq.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/apps/matcalc.html", src: "src/pages/apps/matcalc.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/apps/simmer.html", src: "src/pages/apps/simmer.astro", changefreq: "monthly", priority: "0.8" },
+  { path: "/web-design/", src: "src/pages/web-design/index.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/art/", src: "src/pages/art/index.astro", changefreq: "monthly", priority: "0.7" },
   { path: "/about/", src: "src/pages/about/index.astro", changefreq: "monthly", priority: "0.7" },
   { path: "/about/ink-iron-apps.html", src: "src/pages/about/ink-iron-apps.astro", changefreq: "monthly", priority: "0.6" },

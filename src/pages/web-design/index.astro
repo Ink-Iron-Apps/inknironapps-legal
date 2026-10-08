@@ -1,0 +1,164 @@
+---
+/**
+ * Web design for local businesses — the Ink & Iron Apps client-site service.
+ *
+ * Prices and package contents mirror ~/coding/client-sites/kit/offer.mjs
+ * (TIERS, ADDONS), which is canonical; the price sheet and the website
+ * agreement in the LLC folder match it by hand. Change all three together.
+ *
+ * Deliberately absent until they exist: client names, preview links or
+ * screenshots (no site has sold yet; portfolio permission comes with the
+ * Founding agreement), testimonials, client counts, phone, street address.
+ * Founding carries no scarcity wording — it is open to every client until
+ * 20 have bought, and no deadline or count-left is promised.
+ */
+import Base from "../../layouts/Base.astro";
+
+const PREVIEW = "/contact.html?topic=web-preview";
+
+const head = {
+  "title": "Websites for Local Businesses — Ink & Iron Apps",
+  "description": "Fast, owned websites for small businesses in Northern Colorado. A full free preview of your new site before you pay anything. Founding package $500, no monthly site-builder fees.",
+  "keywords": "web design Northern Colorado, Windsor web design, Severance website, small business website, landscaper website, local business web design, Ink and Iron Apps",
+  "path": "/web-design/",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "Websites for Local Businesses — Ink & Iron Apps",
+  "ogDescription": "See your new site first, free. Fast, owned, no monthly site-builder fee.",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://inknironapps.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Web Design", "item": "https://inknironapps.com/web-design/" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Website design for local businesses",
+      "serviceType": "Web design",
+      "url": "https://inknironapps.com/web-design/",
+      "provider": { "@id": "https://inknironapps.com/#org" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Northern Colorado" },
+      "offers": [
+        { "@type": "Offer", "name": "Founding", "price": "500", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Standard", "price": "850", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Plus", "price": "1200", "priceCurrency": "USD" }
+      ]
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="books-index web-design">
+  <a class="back-link" href="/">&larr; Home</a>
+  <div class="kicker">Ink &amp; Iron Apps · Web Design</div>
+  <h2>Your new website, <em>before you pay a cent</em>.</h2>
+  <p class="lede">Fast, owned websites for small local businesses in Northern Colorado — landscapers and trades, salons and barbers, groomers, auto shops, cafés, fitness. Built for the business with a slow site, or only a Facebook page, a Google listing or a booking page.</p>
+
+  <div class="editions">
+    <a class="edition-btn primary" href={PREVIEW}>Ask for a free preview &rarr;</a>
+    <a class="edition-btn ghost" href="#packages">See packages &rsaquo;</a>
+  </div>
+
+  <div class="kicker wd-gap">How it works</div>
+  <div class="cols">
+    <div class="col">
+      <span class="num">01 · Free preview</span>
+      <h3>See it first</h3>
+      <p>I build a full, finished new site for your business before you pay anything, behind a private link and passcode. Like it and it's yours. Don't, and you owe nothing.</p>
+    </div>
+    <div class="col">
+      <span class="num">02 · Make it yours</span>
+      <h3>Pick and tweak</h3>
+      <p>Choose from about ten color options right in the preview, then send changes in rounds until it's right.</p>
+    </div>
+    <div class="col">
+      <span class="num">03 · You own it</span>
+      <h3>Live on your domain</h3>
+      <p>Plain files go live on your own domain, hosted free in your own account. You own them outright — no $20–40 a month site-builder fee like Wix or Squarespace.</p>
+    </div>
+  </div>
+
+  <div class="essay">
+    <p class="pull">Loads in 2–4 seconds on a phone — the sites they replace took 7 to 60+.</p>
+    <p>Terms are simple: half to start, half when the site goes live.</p>
+  </div>
+
+  <div id="packages" class="kicker wd-gap">Packages</div>
+  <div class="cols">
+    <div class="col wd-tier">
+      <span class="num">Founding</span>
+      <h3>$500</h3>
+      <p>The finished site, 2 rounds of changes, up to 2 new pages, live on your domain. In exchange for a short review and permission to show your site.</p>
+    </div>
+    <div class="col wd-tier wd-rec">
+      <span class="num">Standard · Recommended</span>
+      <h3>$850</h3>
+      <p>3 rounds of changes, up to 3 new pages, your own photos added, free hosting set up in your account, and Google gets your hours, phone and service area.</p>
+    </div>
+    <div class="col wd-tier">
+      <span class="num">Plus</span>
+      <h3>$1,200</h3>
+      <p>Everything in Standard, 4 rounds of changes, up to 4 new pages, and a Google Business Profile cleanup — hours, photos, services, service area.</p>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>Add-ons</h2>
+    <details>
+      <summary>Care plan — $60/month</summary>
+      <p>Up to an hour of edits a month plus a seasonal refresh. Cancel any time; the site stays yours.</p>
+    </details>
+    <details>
+      <summary>Lead Autopilot — $400 ($150 for Founding clients)</summary>
+      <p>Website requests land in a Google Sheet you own, with an instant reply, quote follow-ups and review requests — all running in your own Google account.</p>
+    </details>
+    <details>
+      <summary>Booking button — $50, or $75 set up for you</summary>
+      <p>$50 to connect a booking tool you already use; $75 if I set the tool up for you.</p>
+    </details>
+    <details>
+      <summary>Email at your domain — $75</summary>
+      <p>Up to 3 addresses at your own domain.</p>
+    </details>
+    <details>
+      <summary>Copywriting — $60 per page</summary>
+      <p>Page copy written for you instead of from your notes.</p>
+    </details>
+    <details>
+      <summary>Google Business Profile cleanup — $100</summary>
+      <p>Hours, photos, services and service area brought up to date. Included in Plus.</p>
+    </details>
+    <details>
+      <summary>Footer credit removal — $100</summary>
+      <p>Removes the small Ink &amp; Iron Apps credit from your site's footer. On Founding sites, available once the site has been live 12 months.</p>
+    </details>
+  </div>
+
+  <div class="essay wd-gap">
+    <p>Want to see what your business could look like? Send the name and your current site or page, and I'll build the preview.</p>
+    <div class="editions">
+      <a class="edition-btn primary" href={PREVIEW}>Ask for a free preview &rarr;</a>
+    </div>
+    <div class="author-contact">
+      <span>Or email the workshop</span>
+      <a href="mailto:info@inknironapps.com">info@inknironapps.com</a>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+.web-design .wd-gap { margin-top: 64px; }
+.web-design .cols { margin-top: 24px; }
+.web-design .wd-tier { padding: 28px; border: 1px solid rgba(232, 228, 218, 0.10); border-radius: 6px; }
+.web-design .wd-tier h3 { font-size: 40px; }
+.web-design .wd-rec { border-color: var(--teal-light); }
+.web-design .faq details p { color: var(--muted); margin-top: 10px; }
+</style>
+</Base>
