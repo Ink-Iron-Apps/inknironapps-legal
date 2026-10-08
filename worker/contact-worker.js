@@ -60,7 +60,7 @@ const PREVIEW_FIELDS = [
 ];
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const allowedOrigin = env.ALLOWED_ORIGIN || SITE_ORIGIN_DEFAULT;
 
     // CORS preflight
@@ -167,6 +167,18 @@ export default {
     } catch (e) {
       console.error("Fetch to Resend failed:", e);
       return back("error=network");
+    }
+
+    // Free-preview requests also go straight to the client-sites hub, which records them on its Today view and pushes
+    // an alert to Riley's phone (client-sites hub/worker.js previewHook). Best effort: the email above already went.
+    if (topic === "web-preview" && form.has("business") && env.PREVIEW_HOOK_SECRET) {
+      const fields = Object.fromEntries(PREVIEW_FIELDS.map(([key, , , max]) => [key, String(form.get(key) || "").trim().slice(0, max)]));
+      const hook = fetch("https://previews.inknironapps.com/client/_hooks/preview-request", {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${env.PREVIEW_HOOK_SECRET}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ ...fields, name, email }),
+      }).catch((e) => console.error("preview hook failed:", e));
+      if (ctx && ctx.waitUntil) ctx.waitUntil(hook); else await hook;
     }
 
     return back("sent=1");

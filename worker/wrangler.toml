@@ -12,6 +12,8 @@ compatibility_date = "2026-05-07"
 
 # RESEND_API_KEY is a secret, set out of band and preserved across deploys:
 #   wrangler secret put RESEND_API_KEY -c worker/wrangler.toml
+# PREVIEW_HOOK_SECRET (also a secret) lets the free-preview form report requests to the client-sites hub; the same
+# value is set on the hub Worker (client-previews-hub). A copy lives in ~/.config/client-sites/preview-hook.env on vps.
 # ALLOWED_ORIGIN is deliberately unset — the Worker defaults to
 # https://inknironapps.com when it's absent.
 
