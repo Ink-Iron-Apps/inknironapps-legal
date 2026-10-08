@@ -3,6 +3,7 @@
 // Body is verbatim; head values come from the original tags.
 import Base from "../layouts/Base.astro";
 import BookCard from "../components/BookCard.astro";
+import Portfolio from "../components/Portfolio.astro";
 import bookData from "../data/books.json";
 import { ORDER, COPY } from "../data/copy";
 const books = bookData.books;
@@ -219,6 +220,8 @@ const head = {
   <div class="editions">
     <a class="edition-btn primary" href="/web-design/#preview">Ask for a free preview &rarr;</a>
   </div>
+
+  <Portfolio limit={3} />
 
   <div class="section-foot">
     <a class="link-arrow" href="/web-design/">How it works &amp; packages &rsaquo;</a>

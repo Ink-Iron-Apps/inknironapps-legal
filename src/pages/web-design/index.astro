@@ -13,6 +13,7 @@
  * 20 have bought, and no deadline or count-left is promised.
  */
 import Base from "../../layouts/Base.astro";
+import Portfolio from "../../components/Portfolio.astro";
 
 const PREVIEW = "#preview";
 const ENDPOINT = "https://inknironapps-contact.padragantrbs.workers.dev/";
@@ -101,6 +102,8 @@ const head = {
     <p class="pull">Loads in 2–4 seconds on a phone — the sites they replace took 7 to 60+.</p>
     <p>Terms are simple: half to start, half when the site goes live.</p>
   </div>
+
+  <Portfolio />
 
   <div id="packages" class="kicker wd-gap">Packages</div>
   <div class="cols">

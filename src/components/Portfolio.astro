@@ -1,0 +1,53 @@
+---
+/**
+ * "Recent work": sold client sites still carrying the footer credit.
+ *
+ * src/data/portfolio.json is written by the client-sites session, not by hand:
+ * it adds a site once it is sold, live on its own domain and not opted out
+ * (agreement section 5), and removes it when any of that stops being true. The
+ * screenshot for each entry is a 1280x800 JPEG at public/portfolio/<slug>.jpg.
+ *
+ * Renders nothing at all while the list is empty: no heading, no placeholder.
+ */
+import entries from "../data/portfolio.json";
+
+interface Props {
+  /** Show at most this many, newest first. */
+  limit?: number;
+  /** Kicker above the grid. */
+  kicker?: string;
+}
+
+const { limit, kicker = "Recent work" } = Astro.props;
+
+const sites = (entries as any[])
+  .filter((e) => e && e.slug && e.name && e.url && e.image)
+  .sort((a, b) => String(b.live || "").localeCompare(String(a.live || "")))
+  .slice(0, limit ?? Infinity);
+---
+{sites.length > 0 && (
+  <div class="portfolio">
+    <div class="kicker">{kicker}</div>
+    <div class="portfolio-grid">
+      {sites.map((s) => (
+        <a class="portfolio-card" href={s.url} rel="noopener">
+          <img src={s.image} width="1280" height="800" loading="lazy" decoding="async" alt={`${s.name} website, home page`}>
+          <div class="portfolio-name">{s.name}</div>
+          <div class="portfolio-meta">{[s.industry, s.town].filter(Boolean).join(" · ")}</div>
+          <div class="portfolio-link">{s.url.replace(/^https?:\/\//, "").replace(/\/$/, "")} &rarr;</div>
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+<style is:global>
+.portfolio { margin-top: 64px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 32px; margin-top: 24px; }
+.portfolio-card { display: block; color: inherit; border: 1px solid rgba(232, 228, 218, 0.10); border-radius: 6px; overflow: hidden; transition: border-color 0.2s; }
+.portfolio-card:hover { border-color: var(--teal-light); }
+.portfolio-card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid rgba(232, 228, 218, 0.10); }
+.portfolio-name { font-family: 'EB Garamond', Georgia, serif; font-size: 22px; padding: 18px 20px 0; }
+.portfolio-meta { font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.08em; color: var(--muted); padding: 6px 20px 0; text-transform: capitalize; }
+.portfolio-link { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--teal-bright); padding: 10px 20px 18px; }
+</style>
