@@ -51,7 +51,10 @@ Autopilot shelved it becomes online booking only, and the total drops to $100 a 
 1. Wait for the Department of Revenue answer, and for Riley to say so.
 2. Restore the block above into the Add-ons list in `src/pages/web-design/index.astro`,
    between the care plan and the online booking entries.
-3. Put the `Lead Autopilot` entry back in `ADDONS` in `~/coding/client-sites/kit/offer.mjs`
+3. Flip `AUTOPILOT_OFFERED` back to `true` in `~/coding/client-sites/kit/offer.mjs`
    first — that file is canonical for prices and add-ons, and the client-sites session owns
-   it. The price sheet and agreement in the HQ folder move in the same change.
+   it. As of their commit 56cc21d the flag is `false` and `ADDONS` filters the entry out,
+   the 19 pitch emails are rebuilt without it, and the Autopilot preview demos are gone.
+   Their restore steps are in `kit/autopilot/SHELVED.md`, which points back at this file.
+   The price sheet and agreement in the HQ folder move in the same change.
 4. Restore the care plan cross-link line and its combined total.
