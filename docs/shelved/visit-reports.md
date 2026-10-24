@@ -51,15 +51,24 @@ Rules carried over from both rounds:
 </details>
 ```
 
-## Worth settling before this goes back up
+## Settled by research's GA section, relayed 2026-10-24
 
-Google Analytics sets cookies and processes visitor data, which Cloudflare Web Analytics
-did not. That is a question for HQ or the research session, not for this page's copy:
+Both questions this file raised are answered, so publish on the word without reopening them:
 
-- Each client site running GA needs its own privacy disclosure, and under the Colorado
-  Privacy Act a visitor-facing notice and opt-out may be required. The site agreement's
-  analytics section should say who is responsible for that.
-- "Advertising features turned off" is a setting in the client's GA property, so someone has
-  to keep it off. Worth naming in the agreement rather than only on this page.
+- **Privacy and opt-out.** The Colorado Privacy Act does not apply to these clients — they
+  are under its thresholds — so no visitor opt-out is required. Agreement 7.5(f) and 4.5
+  make the privacy-page line the client's own statement, which the client keeps on their
+  site with a prominent link to Google's page.
+- **Advertising features.** The GA property lives in Ink & Iron's own GA account, not the
+  client's. Agreement 7.5(b) commits Ink & Iron to turning off advertising features, Google
+  signals and data sharing.
+
+Note the account ownership, because it is the one real difference from the Cloudflare
+version: that line said the counter sat "in your own Cloudflare account", and GA does not.
+The held wording claims no account owner, so it stays correct as written — don't add one.
+
+client-sites switched its kit wording to Google Analytics in their commit 8901cc1, and their
+ALL_ADDONS entry now matches this line. ANALYTICS_OFFERED stays false there until
+multiclass-holdings confirms the agreement and the printed price sheet are committed.
 
 This file is not published: Astro builds only `src/pages` and copies `public/`.
