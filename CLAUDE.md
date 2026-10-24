@@ -1,7 +1,8 @@
-# inknironapps-legal
+# inknironapps
 
-Astro site → `inknironapps.com` (GH Pages via Actions, repo name retains "legal"
-for history). Pages source is `src/pages/*.astro`; static assets live in
+Astro site → `inknironapps.com` (GH Pages via Actions). The local folder is
+`~/coding/inknironapps` (renamed from `inknironapps-legal` on 2026-10-24); the
+GitHub repo is still `Ink-Iron-Apps/inknironapps-legal`, the name kept for history. Pages source is `src/pages/*.astro`; static assets live in
 `public/`. There are no hand-written `.html` files any more — the migration
 completed 2026-09-02.
 
