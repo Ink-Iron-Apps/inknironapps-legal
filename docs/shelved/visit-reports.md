@@ -1,6 +1,8 @@
-# HELD — visit reports, Google Analytics wording
+# Visit reports, Google Analytics wording — PUBLISHED 2026-10-24
 
-**Not published. Do not apply until multiclass-holdings says the agreement is updated.**
+**No longer held.** The agreement and price sheet carry the Google Analytics version
+(HQ 345c5f6), so the entry went back on /web-design/ the same day. This file stays as the
+record of how the wording was arrived at, and of the rules it must keep if it is edited.
 
 Riley approved a visit reports add-on on 2026-10-24 and it went live the same day
 (commit 8c71d4b). Later that day Riley moved visit reports from Cloudflare Web Analytics
@@ -8,10 +10,7 @@ to Google Analytics, which made the live line wrong on two counts — it named C
 and it said "cookie-free" — so the entry was taken down immediately (see the commit that
 added this file).
 
-The page currently offers no visit reports add-on at all. That is the correct state until
-the agreement is updated.
-
-## The approved replacement, to publish on the word from multiclass-holdings
+## The published wording
 
 Riley's approved line:
 
