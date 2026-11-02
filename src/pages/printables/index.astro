@@ -1,0 +1,234 @@
+---
+// One Geek Press: the printables storefront, published on Etsy since
+// 2026-10-27. This page exists so the business is visible from this site's root
+// - Pinterest refused API access because a reviewer opening the home page saw
+// books, apps and web design and no printables, so the site did not corroborate
+// the app's stated purpose. Hence a nav link, a home-page section and this page,
+// all indexable: an orphan page would not fix that.
+//
+// Product names, categories and what each sheet contains come from
+// ~/coding/etsy-store/etsy-listings.md, which the etsy-store session owns. Pull
+// from it rather than inventing titles, and ask that session before changing any
+// product claim here. Prices are deliberately absent: they move with Etsy sales
+// and the shop is the one place they can be right.
+//
+// The brand is written "One Geek Press", three words, everywhere a person reads
+// it (Riley, 2026-11-01). The unspaced OneGeekPress is only the Etsy shop handle
+// and the /privacy/onegeekpress.html alias filename.
+import Base from "../../layouts/Base.astro";
+
+const SHOP = "https://www.etsy.com/shop/OneGeekPress";
+
+const sections = [
+  {
+    name: "Player aids",
+    blurb: "Sheets a player keeps in front of them at the table.",
+    items: [
+      ["Session Notes", "what happened, who you met, clues to chase, loot, the moments worth remembering"],
+      ["Character Backstory Workbook", "guided prompts that turn a stat block into a person"],
+      ["Inventory &amp; Loot Tracker", "coin, equipped gear, attunement slots and pack, plus a party page for unclaimed loot"],
+      ["Spell Tracker", "slots, prepared spells and hand-written reference cards for the four you cast most"],
+      ["Quest Log", "active quests with giver, goal and reward; rumours; the promises your party made"],
+      ["Downtime &amp; Shopping Tracker", "downtime days, crafting progress, lodging, contacts, and a market-day page"],
+      ["Companion Sheet", "a real sheet for the familiar, mount or pet the party loves most"],
+      ["Player Reference Cards", "cut-out cards for your turn, the gaps between turns, and what to ask before acting"],
+      ["Bastion Tracker", "a home base that stays straight: hirelings, orders, facilities and gold"],
+      ["Alchemy Log", "ingredients and their properties, potions on hand, brewing in progress"],
+      ["Fallen Hero Record", "the final moment as it happened, the epitaph, what the party carried on"],
+      ["Campaign Yearbook", "the keepsake a table signs when a campaign ends, awards and all"],
+    ],
+  },
+  {
+    name: "DM tools",
+    blurb: "Prep and run the game from behind the screen.",
+    items: [
+      ["DM Session Prep", "strong start, possible scenes, ten secrets and clues, locations, NPCs, treasure"],
+      ["Twenty-Minute Prep", "one page, five timed boxes, for the brain that preps at 6:40 for a seven o'clock game"],
+      ["NPC Tracker", "four full profiles a sheet — voice, wants, secret, attitude — and a campaign directory"],
+      ["Villain Planner", "a villain who is the hero of their own story: aims, lieutenants, weaknesses"],
+      ["Encounter &amp; Dungeon Planner", "map grid, ten-room key, dungeon logic, and a set-piece worksheet"],
+      ["Settlement Planner", "who rules and who really rules, shops, the tavern and its regulars, a rumour table"],
+      ["Party Tracker", "the behind-the-screen roster: AC, HP, passive scores, DCs, senses, languages"],
+      ["Combat Tracker", "initiative for twelve combatants with AC, HP and conditions, plus a round counter"],
+      ["Travel &amp; Hexcrawl Log", "day-by-day travel with marching order, watches and supplies, and a hex map"],
+      ["Session Zero Kit", "the pitch, expectations, scheduling, lines and veils, safety signals"],
+      ["One-Shot Planner", "three scenes, a cast with one trait each, and what to cut when time runs short"],
+      ["Campaign Journal", "the volume a table keeps: premise, world truths, the cast, a long session log"],
+      ["Heist &amp; Mystery Planner", "the two adventures nobody preps well, on two pages"],
+      ["West Marches Kit", "the table compact, a roster, and a wilderness that remembers"],
+      ["Letters &amp; Handouts Kit", "six fill-in props — a wanted poster, a sealed decree, letters"],
+      ["DM Screen Inserts", "four landscape panels sized for a standard screen"],
+      ["Tavern Menu Blanks", "a fill-in bill of fare to hand the party when they walk in"],
+      ["Battle Map Grid Pack", "six print-ready sheets: true one-inch squares, half-inch, hexes and more"],
+    ],
+  },
+  {
+    name: "Bundles",
+    blurb: "The same sheets, collected.",
+    items: [
+      ["Player Pack", "the six player essentials in one kit"],
+      ["Dungeon Master Pack", "nine DM tools in one kit"],
+      ["Complete Table Bundle", "the whole shop, players and DMs both"],
+    ],
+  },
+  {
+    name: "Game night",
+    blurb: "Away from the RPG table, same hobby shelf.",
+    items: [
+      ["Game Night Score Sheets", "one universal score sheet for every box on the shelf, up to six players"],
+      ["Mini Painting Log", "backlog from primed to based, and painted versus bought this year"],
+    ],
+  },
+  {
+    name: "Books, writing and worlds",
+    blurb: "For the people who build the setting and read the genre.",
+    items: [
+      ["Worldbuilding Kit", "six pages that turn a vague world into a usable one"],
+      ["Fantasy Reading Journal", "a to-be-read list treated like a quest log, with series trackers"],
+    ],
+  },
+  {
+    name: "Trackers (spreadsheets)",
+    blurb: "Two of the catalogue are workbooks rather than printables.",
+    items: [
+      ["Game Backlog Tracker", "a game library that works like its own app, with live stat tiles"],
+      ["Anime &amp; Manga Tracker", "progress bars that fill themselves from episodes watched"],
+    ],
+  },
+  {
+    name: "Cons and cosplay",
+    blurb: "",
+    items: [
+      ["Con Planner", "a budget decided before the exhibit hall decides for you, and a schedule that survives the weekend"],
+    ],
+  },
+];
+
+const shots = [
+  ["session-notes", "Session Notes, printed and filled in at a table"],
+  ["dm-session-prep", "DM Session Prep, the one-page prep sheet"],
+  ["encounter-planner", "Encounter and Dungeon Planner, map grid and room key"],
+  ["campaign-journal", "Campaign Journal, the long-form session log"],
+  ["battle-grids", "Battle Map Grid Pack, one-inch squares and hexes"],
+  ["game-backlog", "Game Backlog Tracker, the spreadsheet dashboard"],
+];
+
+const head = {
+  "title": "Printables — One Geek Press",
+  "description": "One Geek Press is the printables imprint of Ink & Iron Apps: printable tabletop RPG play aids and hobby trackers — player sheets, DM prep, battle grids and campaign journals — sold as instant digital downloads on Etsy.",
+  "keywords": "One Geek Press, printable RPG play aids, DnD printables, DM prep sheets, tabletop RPG printables, campaign journal, battle map grid, digital downloads, Ink and Iron Apps",
+  "path": "/printables/",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "Printables — One Geek Press",
+  "ogDescription": "Printable tabletop RPG play aids and hobby trackers, by One Geek Press.",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inknironapps.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Printables",
+          "item": "https://inknironapps.com/printables/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Printables — One Geek Press",
+      "url": "https://inknironapps.com/printables/",
+      "description": "Printable tabletop RPG play aids and hobby trackers by One Geek Press, the printables imprint of Ink & Iron Apps, sold as instant digital downloads on Etsy.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Ink & Iron Apps",
+        "url": "https://inknironapps.com/"
+      },
+      "about": {
+        "@type": "Brand",
+        "name": "One Geek Press",
+        "url": "https://www.etsy.com/shop/OneGeekPress"
+      }
+    }
+  ]
+};
+---
+<Base {...head}>
+<section class="printables">
+  <a class="back-link" href="/">&larr; Home</a>
+  <div class="kicker">The Workshop</div>
+  <h2>Printables, <em>by One Geek Press</em>.</h2>
+  <p class="lede">One Geek Press is the printables imprint of Ink &amp; Iron Apps — the same workshop as the books and the apps on this site, run by Multi-Class Holdings LLC. It makes printable play aids for tabletop roleplaying games, and a few trackers for the rest of the hobby shelf: sheets a player keeps in front of them, tools a game master preps with, and the journals a table keeps for years. Everything is an instant digital download, sold through our Etsy shop.</p>
+
+  <div class="editions">
+    <a class="edition-btn primary" href={SHOP} rel="noopener">Visit the shop on Etsy &rarr;</a>
+  </div>
+
+  <div class="printables-grid">
+    {shots.map(([slug, alt]) => (
+      <img src={`/images/printables/${slug}.jpg`} width="960" height="720" loading="lazy" decoding="async" alt={alt}>
+    ))}
+  </div>
+
+  <div class="kicker pr-gap">What you get</div>
+  <div class="cols">
+    <div class="col">
+      <h3>Print it your way</h3>
+      <p>Every sheet is a PDF in three paper sizes — US Letter, A4 and A5 — and in two looks: an ink-friendly black and white, and a decorative parchment. Print one copy or fifty; the file is yours to reprint forever.</p>
+    </div>
+    <div class="col">
+      <h3>Or type into it</h3>
+      <p>Most sheets also come as fillable PDFs, so you can type on a computer or tablet, save and print. The fields stay in your copy of the file: nothing is sent anywhere, and nothing in these files needs a network.</p>
+    </div>
+    <div class="col">
+      <h3>Nothing to wait for</h3>
+      <p>Etsy emails the download link the moment you buy. Two of the catalogue — the game and anime trackers — are spreadsheets instead, for Excel or Google Sheets.</p>
+    </div>
+  </div>
+
+  <div class="kicker pr-gap">The catalogue</div>
+  <p class="lede">The shop's full range, by section. Prices, sales and the files themselves live on <a href={SHOP} rel="noopener">the Etsy shop</a>.</p>
+
+  {sections.map((s) => (
+    <div class="pr-section">
+      <h3>{s.name}</h3>
+      {s.blurb && <p class="pr-blurb">{s.blurb}</p>}
+      <ul class="pr-list">
+        {s.items.map(([title, gloss]) => (
+          <li><strong set:html={title} /> — <span set:html={gloss} /></li>
+        ))}
+      </ul>
+    </div>
+  ))}
+
+  <div class="essay pr-gap">
+    <p>Sold on Etsy, which runs the checkout and the download and holds the buyer's details. We collect nothing ourselves — the <a href="/privacy/one-geek-press.html">One Geek Press privacy policy</a> says exactly what that means. Questions about an order go through Etsy Messages; anything else, <a href="/contact.html?topic=general">use the contact form</a>.</p>
+  </div>
+
+  <div class="editions">
+    <a class="edition-btn primary" href={SHOP} rel="noopener">Visit the shop on Etsy &rarr;</a>
+  </div>
+</section>
+</Base>
+
+<style is:global>
+.printables-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+.printables-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid rgba(232, 228, 218, 0.10); border-radius: 6px; }
+.printables .pr-gap { margin-top: 64px; }
+.printables .pr-section { margin-top: 36px; }
+.printables .pr-blurb { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--muted); margin-top: 4px; }
+.printables .pr-list { list-style: none; padding: 0; margin: 16px 0 0; }
+.printables .pr-list li { font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.6; padding: 8px 0; border-top: 1px solid rgba(232, 228, 218, 0.08); }
+.printables .pr-list li:first-child { border-top: none; }
+</style>

@@ -120,6 +120,7 @@ const entries: Entry[] = [
   { path: "/apps/matcalc.html", src: "src/pages/apps/matcalc.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/apps/simmer.html", src: "src/pages/apps/simmer.astro", changefreq: "monthly", priority: "0.8" },
   { path: "/web-design/", src: "src/pages/web-design/index.astro", changefreq: "monthly", priority: "0.8" },
+  { path: "/printables/", src: "src/pages/printables/index.astro", changefreq: "monthly", priority: "0.8" },
   // /work/ is listed only once there is work to show.
   ...((portfolio as unknown[]).length > 0
     ? [{ path: "/work/", src: "src/data/portfolio.json", changefreq: "weekly", priority: "0.7" }]

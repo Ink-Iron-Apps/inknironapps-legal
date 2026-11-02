@@ -27,6 +27,7 @@ Two brands, one site:
 /apps/matcalc.html                                         → app detail
 /apps/simmer.html                                          → app detail
 /web-design/                                               → local-business website service + preview form
+/printables/                                               → One Geek Press printables catalogue (facts from repo etsy-store)
 /work/                                                     → portfolio of sold client sites (hidden while empty)
 /about/                                                    → about the author (Riley E. Antrobus)
 /about/ink-iron-apps.html                                  → about the maker (Ink & Iron Apps)
