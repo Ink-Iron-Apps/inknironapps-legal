@@ -129,6 +129,7 @@ const entries: Entry[] = [
   { path: "/contact.html", src: "src/pages/contact.astro", changefreq: "monthly", priority: "0.7" },
   { path: "/privacy-policy.html", src: "src/pages/privacy-policy.astro", changefreq: "yearly", priority: "0.3" },
   { path: "/privacy/dls-deliveries.html", src: "src/pages/privacy/dls-deliveries.astro", changefreq: "yearly", priority: "0.2" },
+  { path: "/privacy/one-geek-press.html", src: "src/pages/privacy/one-geek-press.astro", changefreq: "yearly", priority: "0.2" },
   { path: "/terms.html", src: "src/pages/terms.astro", changefreq: "yearly", priority: "0.3" },
 ];
 

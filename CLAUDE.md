@@ -32,6 +32,7 @@ Two brands, one site:
 /about/ink-iron-apps.html                                  → about the maker (Ink & Iron Apps)
 /privacy-policy.html                                       → legal (used by app store listings)
 /privacy/dls-deliveries.html                               → legal (DLS Deliveries, Play listing; facts from repo qmsync)
+/privacy/one-geek-press.html                               → legal (One Geek Press printables storefront; facts from repo etsy-store)
 /terms.html                                                → legal (used by app store listings)
 /sitemap.xml · /robots.txt                                 → SEO
 ```
