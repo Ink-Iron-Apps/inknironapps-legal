@@ -33,6 +33,7 @@ Two brands, one site:
 /privacy-policy.html                                       → legal (used by app store listings)
 /privacy/dls-deliveries.html                               → legal (DLS Deliveries, Play listing; facts from repo qmsync)
 /privacy/one-geek-press.html                               → legal (One Geek Press printables storefront; facts from repo etsy-store)
+/privacy/onegeekpress.html                                 → same page, unspaced spelling (Pinterest's URL check); noindex, not in sitemap
 /terms.html                                                → legal (used by app store listings)
 /sitemap.xml · /robots.txt                                 → SEO
 ```

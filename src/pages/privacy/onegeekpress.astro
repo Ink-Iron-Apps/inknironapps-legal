@@ -1,0 +1,41 @@
+---
+// Alias for /privacy/one-geek-press.html, serving the same policy at the
+// unspaced spelling. Pinterest's developer app form rejected the hyphenated URL
+// with "Please include your company name in the URL for your privacy policy",
+// which reads as a literal substring check against the company name with its
+// spaces stripped - "onegeekpress", which "one-geek-press" does not contain.
+//
+// It serves the page rather than redirecting, because a redirect would hand
+// Pinterest's fetcher the hyphenated URL again and could fail the same check at
+// the destination, and because this site is static: GitHub Pages cannot issue a
+// real 301, so the alternative is a meta refresh, which is a worse answer again.
+// Duplicate content is handled the way search engines ask: `path` below is the
+// canonical URL, so the canonical link and og:url both point at the hyphenated
+// page, this copy carries noindex, and only the canonical path is in the
+// sitemap. The words live in the shared component, so the two cannot drift.
+//
+// If Pinterest rejects this spelling too, the check is on the domain rather than
+// the path and no page here can satisfy it - that is Riley's call between
+// renaming the app's company field and registering a onegeekpress domain, and
+// this alias can be deleted along with its sitemap-free, noindexed footprint.
+import Base from "../../layouts/Base.astro";
+import OneGeekPressPolicy from "../../components/OneGeekPressPolicy.astro";
+const head = {
+  "title": "One Geek Press Privacy Policy — Ink & Iron Apps",
+  "description": "Privacy policy for One Geek Press, the printable tabletop RPG play aids sold as digital downloads on Etsy. We collect nothing: every sale belongs to the marketplace.",
+  "keywords": "One Geek Press privacy policy, printable RPG play aids, digital downloads, Etsy shop privacy policy, Multi-Class Holdings",
+  "path": "/privacy/one-geek-press.html",
+  "ogType": "website",
+  "ogSiteName": "Ink & Iron Apps",
+  "ogTitle": "One Geek Press Privacy Policy",
+  "ogDescription": "Crafted stories. Forged software.",
+  "image": "/og-image-1200x630.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "noindex": true,
+  "jsonld": []
+};
+---
+<Base {...head}>
+    <OneGeekPressPolicy />
+</Base>
